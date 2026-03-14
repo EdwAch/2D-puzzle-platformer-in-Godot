@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://dyt525homcrip"]
+
+[ext_resource type="Script" uid="uid://dsss21wn8o3k7" path="res://PlayerController.cs" id="1_eqhe0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k77ap"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_f24su"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_haeiw"]
+
+[sub_resource type="Shader" id="Shader_eqhe0"]
+code = "shader_type canvas_item;
+
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	// Called for every pixel the material is visible on.
+}
+
+//void light() {
+//	// Called for every pixel for every light affecting the CanvasItem.
+//	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b5kf5"]
+shader = SubResource("Shader_eqhe0")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_k77ap"]
+
+[node name="Node2D" type="Node2D" unique_id=1179167687]
+scale = Vector2(2, 2)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=741648026]
+position = Vector2(154.5, 68.5)
+rotation = -1.5707964
+scale = Vector2(1, 0.5)
+script = ExtResource("1_eqhe0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=485363316]
+shape = SubResource("RectangleShape2D_k77ap")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=642330521]
+modulate = Color(0, 0, 0, 1)
+use_parent_material = true
+position = Vector2(-0.0960138, 0.024959624)
+scale = Vector2(19.864614, 20.101444)
+texture = SubResource("CanvasTexture_f24su")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1214468811]
+position = Vector2(173, 143)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=2040464691]
+scale = Vector2(10, 0.5)
+shape = SubResource("RectangleShape2D_haeiw")
+debug_color = Color(6.160736e-06, 0.599374, 0.7055376, 0.41960785)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=424156043]
+material = SubResource("ShaderMaterial_b5kf5")
+position = Vector2(1.335144e-05, 5.00679e-06)
+scale = Vector2(199.99998, 9.999994)
+texture = SubResource("CanvasTexture_k77ap")
