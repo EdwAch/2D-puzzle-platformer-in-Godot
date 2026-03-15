@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cj13rkdordyc2"]
+
+[ext_resource type="Script" uid="uid://dsni0anedjr16" path="res://DeadlyObject.cs" id="1_ww2l2"]
+
+[node name="Spikes" type="StaticBody2D" unique_id=44092525]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1705267683]
+scale = Vector2(5, 5)
+polygon = PackedVector2Array(0, -2, -2, 1, 2, 1)
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=725245323]
+color = Color(1, 0, 0, 1)
+polygon = PackedVector2Array(0, -10, -10, 5, 10, 5)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=352897159]
+script = ExtResource("1_ww2l2")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=484886978]
+polygon = PackedVector2Array(0, -10, -10, 5, 10, 5)

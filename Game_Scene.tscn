@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://dyt525homcrip"]
 
-[ext_resource type="Script" uid="uid://dsss21wn8o3k7" path="res://PlayerController.cs" id="1_eqhe0"]
+[ext_resource type="Script" uid="uid://dsss21wn8o3k7" path="res://PlayerController.cs" id="1_kmmve"]
+[ext_resource type="PackedScene" uid="uid://cj13rkdordyc2" path="res://Spike.tscn" id="2_72uig"]
+[ext_resource type="PackedScene" uid="uid://bs78rbuqy5d43" path="res://Triple_Spikes.tscn" id="3_cil73"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k77ap"]
 
@@ -39,8 +41,9 @@ scale = Vector2(2, 2)
 position = Vector2(154.5, 68.5)
 rotation = -1.5707964
 scale = Vector2(1, 0.5)
-script = ExtResource("1_eqhe0")
+script = ExtResource("1_kmmve")
 gravity = 500.0
+jumpSpeed = -250.0
 groundChecker = NodePath("ShapeCast2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=485363316]
@@ -74,3 +77,9 @@ material = SubResource("ShaderMaterial_b5kf5")
 position = Vector2(1.335144e-05, 5.00679e-06)
 scale = Vector2(199.99998, 9.999994)
 texture = SubResource("CanvasTexture_k77ap")
+
+[node name="Spikes" parent="." unique_id=44092525 instance=ExtResource("2_72uig")]
+position = Vector2(254, 133)
+
+[node name="TripleSpikes" parent="." unique_id=595188627 instance=ExtResource("3_cil73")]
+position = Vector2(400, 133)

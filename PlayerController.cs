@@ -9,7 +9,7 @@ public partial class PlayerController : CharacterBody2D
 	[Export] private ShapeCast2D groundChecker;
 
 	private float friction = 35f;
-	// 35 is good for normal ground, less is more time to reach 0
+    // 35 is good for normal ground, less is more time to reach 0
 
 	public override void _PhysicsProcess(double delta) {
 		Vector2 currentVelocity = Velocity;
@@ -47,6 +47,10 @@ public partial class PlayerController : CharacterBody2D
 	private bool IsGrounded() {
 		groundChecker.ForceShapecastUpdate();
 		return groundChecker.IsColliding();
+	}
+
+	public void Die() {
+		QueueFree();
 	}
 	
 }
