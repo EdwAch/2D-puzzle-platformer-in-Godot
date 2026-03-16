@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cj13rkdordyc2"]
+
+[ext_resource type="Script" uid="uid://dsni0anedjr16" path="res://DeadlyObject.cs" id="1_8ryga"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_7k7bx"]
+
+[node name="Spike" type="StaticBody2D" unique_id=855937449]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=449864805]
+polygon = PackedVector2Array(0, -10, -10, 10, 10, 10)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=669038187]
+modulate = Color(1, 0, 0, 1)
+rotation = 3.1415927
+scale = Vector2(20, 20)
+mesh = SubResource("PrismMesh_7k7bx")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1083087655]
+script = ExtResource("1_8ryga")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=1042324636]
+polygon = PackedVector2Array(0, -10, -10, 10, 10, 10)

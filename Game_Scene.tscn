@@ -1,43 +1,36 @@
 [gd_scene format=3 uid="uid://dyt525homcrip"]
 
 [ext_resource type="Script" uid="uid://dsss21wn8o3k7" path="res://PlayerController.cs" id="1_kmmve"]
-[ext_resource type="PackedScene" uid="uid://cj13rkdordyc2" path="res://Spike.tscn" id="2_72uig"]
-[ext_resource type="PackedScene" uid="uid://bs78rbuqy5d43" path="res://Triple_Spikes.tscn" id="3_cil73"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_k77ap"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0vkbl"]
+height = 20.0
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_f24su"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_10xm0"]
+height = 20.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_eqhe0"]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_kmmve"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_haeiw"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0vkbl"]
 
-[sub_resource type="Shader" id="Shader_eqhe0"]
-code = "shader_type canvas_item;
+[sub_resource type="QuadMesh" id="QuadMesh_10xm0"]
+size = Vector2(20, 20)
 
-void vertex() {
-	// Called for every vertex the material is visible on.
-}
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_72uig"]
 
-void fragment() {
-	// Called for every pixel the material is visible on.
-}
+[sub_resource type="QuadMesh" id="QuadMesh_0vkbl"]
+size = Vector2(2.2, 0.2)
 
-//void light() {
-//	// Called for every pixel for every light affecting the CanvasItem.
-//	// Uncomment to replace the default light processing function with this one.
-//}
-"
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kmmve"]
+size = Vector2(1, 20)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_b5kf5"]
-shader = SubResource("Shader_eqhe0")
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_k77ap"]
+[sub_resource type="QuadMesh" id="QuadMesh_72uig"]
+size = Vector2(1, 20)
 
 [node name="Node2D" type="Node2D" unique_id=1179167687]
 scale = Vector2(2, 2)
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=741648026 node_paths=PackedStringArray("groundChecker")]
+z_index = 10
 position = Vector2(154.5, 68.5)
 rotation = -1.5707964
 scale = Vector2(1, 0.5)
@@ -47,21 +40,18 @@ jumpSpeed = -250.0
 groundChecker = NodePath("ShapeCast2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=485363316]
-shape = SubResource("RectangleShape2D_k77ap")
-
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=642330521]
-modulate = Color(0, 0, 0, 1)
-z_index = 1
-use_parent_material = true
-position = Vector2(-0.6320052, 0.02496031)
-scale = Vector2(21.584595, 21.290613)
-texture = SubResource("CanvasTexture_f24su")
+shape = SubResource("CapsuleShape2D_0vkbl")
 
 [node name="ShapeCast2D" type="ShapeCast2D" parent="CharacterBody2D" unique_id=862041703]
 scale = Vector2(0.95, 0.95)
-shape = SubResource("RectangleShape2D_eqhe0")
+shape = SubResource("CapsuleShape2D_10xm0")
 target_position = Vector2(-1.6666641, 0)
 margin = 0.04
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CharacterBody2D" unique_id=2101719956]
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(22.5, 10.284)
+mesh = SubResource("CapsuleMesh_kmmve")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1214468811]
 position = Vector2(173, 143)
@@ -69,17 +59,34 @@ scale = Vector2(5.84, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=2040464691]
 scale = Vector2(10, 0.5)
-shape = SubResource("RectangleShape2D_haeiw")
-debug_color = Color(6.160736e-06, 0.599374, 0.7055376, 0.41960785)
+shape = SubResource("RectangleShape2D_0vkbl")
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=424156043]
-material = SubResource("ShaderMaterial_b5kf5")
-position = Vector2(1.335144e-05, 5.00679e-06)
-scale = Vector2(199.99998, 9.999994)
-texture = SubResource("CanvasTexture_k77ap")
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D" unique_id=11097943]
+scale = Vector2(10, 0.5)
+mesh = SubResource("QuadMesh_10xm0")
 
-[node name="Spikes" parent="." unique_id=44092525 instance=ExtResource("2_72uig")]
-position = Vector2(254, 133)
+[node name="ButtonDoorCombo" type="Node2D" parent="." unique_id=370920083]
+position = Vector2(224.5, 104.99999)
+scale = Vector2(-6.002, 7)
 
-[node name="TripleSpikes" parent="." unique_id=595188627 instance=ExtResource("3_cil73")]
-position = Vector2(400, 133)
+[node name="Button" type="MeshInstance2D" parent="ButtonDoorCombo" unique_id=953031554]
+modulate = Color(0.4509804, 0, 1, 1)
+z_index = -1
+position = Vector2(-0.11315986, 4.9485073)
+scale = Vector2(2, 1)
+mesh = SubResource("CapsuleMesh_72uig")
+
+[node name="ButtonCasing" type="MeshInstance2D" parent="ButtonDoorCombo" unique_id=1960693564]
+modulate = Color(0.44313726, 0.4745098, 0.49411765, 1)
+position = Vector2(-0.11315986, 4.6574187)
+mesh = SubResource("QuadMesh_0vkbl")
+
+[node name="Door" type="StaticBody2D" parent="ButtonDoorCombo" unique_id=371860557]
+position = Vector2(-19.160278, -5.2142844)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ButtonDoorCombo/Door" unique_id=447899365]
+shape = SubResource("RectangleShape2D_kmmve")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="ButtonDoorCombo/Door" unique_id=50189443]
+modulate = Color(0.4509804, 0, 1, 1)
+mesh = SubResource("QuadMesh_72uig")

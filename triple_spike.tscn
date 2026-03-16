@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://cly64ow1gnjlm"]
+
+[ext_resource type="Script" uid="uid://dsni0anedjr16" path="res://DeadlyObject.cs" id="1_j75d0"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_7k7bx"]
+
+[node name="TripleSpike" type="Node2D" unique_id=729572475]
+
+[node name="Spike" type="StaticBody2D" parent="." unique_id=564078574]
+position = Vector2(-20, 0)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spike" unique_id=1849471438]
+polygon = PackedVector2Array(0, -10, -10, 10, 10, 10)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Spike" unique_id=307818025]
+modulate = Color(1, 0, 0, 1)
+rotation = 3.1415927
+scale = Vector2(20, 20)
+mesh = SubResource("PrismMesh_7k7bx")
+
+[node name="Spike2" type="StaticBody2D" parent="." unique_id=1751788145]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spike2" unique_id=879868641]
+polygon = PackedVector2Array(0, -10, -10, 10, 10, 10)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Spike2" unique_id=70287886]
+modulate = Color(1, 0, 0, 1)
+rotation = 3.1415927
+scale = Vector2(20, 20)
+mesh = SubResource("PrismMesh_7k7bx")
+
+[node name="Spike3" type="StaticBody2D" parent="." unique_id=1613475382]
+position = Vector2(20, 0)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spike3" unique_id=413753079]
+polygon = PackedVector2Array(0, -10, -10, 10, 10, 10)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Spike3" unique_id=972059746]
+modulate = Color(1, 0, 0, 1)
+rotation = 3.1415927
+scale = Vector2(20, 20)
+mesh = SubResource("PrismMesh_7k7bx")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1888515786]
+position = Vector2(-179.5, -122.5)
+script = ExtResource("1_j75d0")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=793458337]
+polygon = PackedVector2Array(159.5, 112.5, 149.5, 132.5, 209.5, 132.5, 199.5, 112.5)
