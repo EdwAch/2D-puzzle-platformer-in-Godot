@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://dyt525homcrip"]
 
 [ext_resource type="Script" uid="uid://dsss21wn8o3k7" path="res://PlayerController.cs" id="1_kmmve"]
+[ext_resource type="Script" uid="uid://cf5gnu1yt1kvo" path="res://ButtonController.cs" id="2_10xm0"]
+[ext_resource type="Script" uid="uid://bkjb8ok0fvxgu" path="res://PuzzleDoor.cs" id="3_kmmve"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0vkbl"]
 height = 20.0
@@ -14,6 +16,9 @@ height = 20.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_10xm0"]
 size = Vector2(20, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_72uig"]
+size = Vector2(12.5, 8)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_72uig"]
 
@@ -69,20 +74,39 @@ mesh = SubResource("QuadMesh_10xm0")
 position = Vector2(224.5, 104.99999)
 scale = Vector2(-6.002, 7)
 
-[node name="Button" type="MeshInstance2D" parent="ButtonDoorCombo" unique_id=953031554]
+[node name="ButtonCombo" type="Node2D" parent="ButtonDoorCombo" unique_id=962569475]
+position = Vector2(-0.083306424, 4.928573)
+rotation = 3.1415927
+scale = Vector2(0.16661112, -0.14285713)
+
+[node name="Area2D" type="Area2D" parent="ButtonDoorCombo/ButtonCombo" unique_id=1089435715 node_paths=PackedStringArray("puzzleDoor")]
+script = ExtResource("2_10xm0")
+puzzleDoor = NodePath("../../Door")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ButtonDoorCombo/ButtonCombo/Area2D" unique_id=2099084768]
+position = Vector2(0.25, -3)
+scale = Vector2(0.9999997, 0.9999997)
+shape = SubResource("RectangleShape2D_72uig")
+
+[node name="Button" type="MeshInstance2D" parent="ButtonDoorCombo/ButtonCombo" unique_id=953031554]
 modulate = Color(0.4509804, 0, 1, 1)
 z_index = -1
-position = Vector2(-0.11315986, 4.9485073)
-scale = Vector2(2, 1)
+position = Vector2(0.17918396, 0.13949585)
+rotation = -3.1415927
+scale = Vector2(12.003998, -6.999999)
 mesh = SubResource("CapsuleMesh_72uig")
 
-[node name="ButtonCasing" type="MeshInstance2D" parent="ButtonDoorCombo" unique_id=1960693564]
+[node name="ButtonCasing" type="MeshInstance2D" parent="ButtonDoorCombo/ButtonCombo" unique_id=1960693564]
 modulate = Color(0.44313726, 0.4745098, 0.49411765, 1)
-position = Vector2(-0.11315986, 4.6574187)
+position = Vector2(0.17918396, -1.8981018)
+rotation = -3.1415927
+scale = Vector2(6.001999, -6.999999)
 mesh = SubResource("QuadMesh_0vkbl")
 
-[node name="Door" type="StaticBody2D" parent="ButtonDoorCombo" unique_id=371860557]
-position = Vector2(-19.160278, -5.2142844)
+[node name="Door" type="StaticBody2D" parent="ButtonDoorCombo" unique_id=371860557 node_paths=PackedStringArray("doorCollisionShape2D")]
+position = Vector2(-19.243584, -5.285713)
+script = ExtResource("3_kmmve")
+doorCollisionShape2D = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ButtonDoorCombo/Door" unique_id=447899365]
 shape = SubResource("RectangleShape2D_kmmve")
