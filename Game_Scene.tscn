@@ -79,9 +79,10 @@ position = Vector2(-0.083306424, 4.928573)
 rotation = 3.1415927
 scale = Vector2(0.16661112, -0.14285713)
 
-[node name="Area2D" type="Area2D" parent="ButtonDoorCombo/ButtonCombo" unique_id=1089435715 node_paths=PackedStringArray("puzzleDoor")]
+[node name="Area2D" type="Area2D" parent="ButtonDoorCombo/ButtonCombo" unique_id=1089435715 node_paths=PackedStringArray("puzzleDoor", "buttonMeshInstance")]
 script = ExtResource("2_10xm0")
-puzzleDoor = NodePath("../../Door")
+puzzleDoor = [NodePath("../../Door")]
+buttonMeshInstance = NodePath("../Button")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ButtonDoorCombo/ButtonCombo/Area2D" unique_id=2099084768]
 position = Vector2(0.25, -3)
