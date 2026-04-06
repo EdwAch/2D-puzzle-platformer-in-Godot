@@ -15,6 +15,10 @@ run/main_scene="uid://dyt525homcrip"
 config/features=PackedStringArray("4.6", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+LevelManager="*uid://nceuy12w240s"
+
 [dotnet]
 
 project/assembly_name="2D Puzzle Platformer"

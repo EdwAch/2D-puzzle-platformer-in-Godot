@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://bsyc0edw7u6kj"]
+
+[ext_resource type="Script" uid="uid://cf5gnu1yt1kvo" path="res://ButtonController.cs" id="1_tu3yg"]
+[ext_resource type="Script" uid="uid://bkjb8ok0fvxgu" path="res://PuzzleDoor.cs" id="2_2c2ll"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_72uig"]
+size = Vector2(12.5, 8)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_72uig"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_0vkbl"]
+size = Vector2(2.2, 0.2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kmmve"]
+size = Vector2(1, 20)
+
+[sub_resource type="QuadMesh" id="QuadMesh_72uig"]
+size = Vector2(1, 20)
+
+[node name="ButtonDoorCombo" type="Node2D" unique_id=903838637]
+scale = Vector2(-6.002, 7)
+
+[node name="ButtonCombo" type="Node2D" parent="." unique_id=1768127027]
+position = Vector2(-0.083306424, 4.928573)
+rotation = 3.1415927
+scale = Vector2(0.16661112, -0.14285713)
+
+[node name="Area2D" type="Area2D" parent="ButtonCombo" unique_id=1765889842 node_paths=PackedStringArray("puzzleDoor", "buttonMeshInstance")]
+script = ExtResource("1_tu3yg")
+puzzleDoor = [NodePath("")]
+buttonMeshInstance = NodePath("../Button")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ButtonCombo/Area2D" unique_id=1999570780]
+position = Vector2(0.25, -3)
+scale = Vector2(0.9999997, 0.9999997)
+shape = SubResource("RectangleShape2D_72uig")
+
+[node name="Button" type="MeshInstance2D" parent="ButtonCombo" unique_id=207780295]
+modulate = Color(0.4509804, 0, 1, 1)
+z_index = -1
+position = Vector2(0.17918396, 0.13949585)
+rotation = -3.1415927
+scale = Vector2(12.003998, -6.999999)
+mesh = SubResource("CapsuleMesh_72uig")
+
+[node name="ButtonCasing" type="MeshInstance2D" parent="ButtonCombo" unique_id=693242197]
+modulate = Color(0.44313726, 0.4745098, 0.49411765, 1)
+position = Vector2(0.17918396, -1.8981018)
+rotation = -3.1415927
+scale = Vector2(6.001999, -6.999999)
+mesh = SubResource("QuadMesh_0vkbl")
+
+[node name="Door" type="StaticBody2D" parent="." unique_id=1516421604 node_paths=PackedStringArray("doorCollisionShape2D")]
+position = Vector2(-19.243584, -5.285713)
+script = ExtResource("2_2c2ll")
+doorCollisionShape2D = NodePath("CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door" unique_id=1871321836]
+shape = SubResource("RectangleShape2D_kmmve")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Door" unique_id=1412607311]
+modulate = Color(0.4509804, 0, 1, 1)
+mesh = SubResource("QuadMesh_72uig")
