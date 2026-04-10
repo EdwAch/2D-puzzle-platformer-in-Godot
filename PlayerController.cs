@@ -23,12 +23,17 @@ public partial class PlayerController : CharacterBody2D
 
 
 		float direction = Input.GetAxis("Left", "Right");
+		bool leftDirection = Input.IsActionPressed("Left");
+		bool rightDirection = Input.IsActionPressed("Right");
 
 		if (direction !=0) {
 			currentVelocity.X = direction * speed;
 		} else if (IsGrounded() && currentVelocity.X != 0) {
 			currentVelocity.X = Mathf.MoveToward(Velocity.X, 0, friction);
-		} /*else if (!IsGrounded() && currentVelocity.X != 0) {
+		} else if (!IsGrounded() && leftDirection && rightDirection && currentVelocity.X !=0) {
+			currentVelocity.X = direction * speed;
+		}
+		/*else if (!IsGrounded() && currentVelocity.X != 0) {
 			currentVelocity.X = Mathf.MoveToward(Velocity.X, 0, 10000f);
 		} Uncomment this if dont want movement when no movement key is pressed and midair
 		*/

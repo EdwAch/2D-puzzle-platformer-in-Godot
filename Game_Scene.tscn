@@ -49,6 +49,17 @@ modulate = Color(0, 0, 0, 1)
 scale = Vector2(22.5, 10.284)
 mesh = SubResource("CapsuleMesh_kmmve")
 
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=1375599404]
+rotation = 1.5707964
+scale = Vector2(2, 1)
+process_callback = 0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.05
+drag_top_margin = 0.05
+drag_right_margin = 0.05
+drag_bottom_margin = 0.05
+
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1214468811]
 position = Vector2(173, 143)
 scale = Vector2(5.84, 1)
