@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dyt525homcrip"]
 
+[ext_resource type="Script" uid="uid://bb8yxwg3yfq77" path="res://GameManager.cs" id="1_72uig"]
 [ext_resource type="Script" uid="uid://dsss21wn8o3k7" path="res://PlayerController.cs" id="1_kmmve"]
-[ext_resource type="Script" uid="uid://c6rigrthyryyx" path="res://EndDoor.cs" id="2_10xm0"]
-[ext_resource type="PackedScene" uid="uid://bsyc0edw7u6kj" path="res://button_door_combo.tscn" id="3_kmmve"]
+[ext_resource type="PackedScene" uid="uid://cirgab7pnmul" path="res://level_1.tscn" id="2_10xm0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0vkbl"]
 height = 20.0
@@ -12,18 +12,10 @@ height = 20.0
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_kmmve"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0vkbl"]
-
-[sub_resource type="QuadMesh" id="QuadMesh_10xm0"]
-size = Vector2(20, 20)
-
-[sub_resource type="QuadMesh" id="QuadMesh_kmmve"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_72uig"]
-size = Vector2(2, 33.5)
-
-[node name="Node2D" type="Node2D" unique_id=1179167687]
+[node name="World" type="Node2D" unique_id=1179167687]
 scale = Vector2(2, 2)
+script = ExtResource("1_72uig")
+firstLevel = ExtResource("2_10xm0")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=741648026 node_paths=PackedStringArray("groundChecker")]
 z_index = 10
@@ -60,30 +52,4 @@ drag_top_margin = 0.05
 drag_right_margin = 0.05
 drag_bottom_margin = 0.05
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1214468811]
-position = Vector2(173, 143)
-scale = Vector2(5.84, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=2040464691]
-scale = Vector2(10, 0.5)
-shape = SubResource("RectangleShape2D_0vkbl")
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D" unique_id=11097943]
-scale = Vector2(10, 0.5)
-mesh = SubResource("QuadMesh_10xm0")
-
-[node name="EndDoor" type="Node2D" parent="." unique_id=2079155873]
-position = Vector2(320.5, 121)
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="EndDoor" unique_id=1505980577]
-modulate = Color(0.5882353, 0.29411766, 0, 1)
-position = Vector2(0, -2.503395e-06)
-scale = Vector2(2.2399902, 34.000004)
-mesh = SubResource("QuadMesh_kmmve")
-
-[node name="Area2D" type="Area2D" parent="EndDoor" unique_id=1339554302]
-script = ExtResource("2_10xm0")
-nextLevel = ExtResource("3_kmmve")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EndDoor/Area2D" unique_id=1548297304]
-shape = SubResource("RectangleShape2D_72uig")
+[node name="LevelContainer" type="Node2D" parent="." unique_id=1460257677]

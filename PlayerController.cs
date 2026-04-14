@@ -7,7 +7,6 @@ public partial class PlayerController : CharacterBody2D
 	[Export] private float gravity = 400f;
 	[Export] private float jumpSpeed = -200f;
 	[Export] private ShapeCast2D groundChecker;
-
 	private bool doubleJump = false;
 	private float friction = 35f;
     // 35 is good for normal ground, less is more time to reach 0
@@ -62,6 +61,5 @@ public partial class PlayerController : CharacterBody2D
 
 	public void Die() {
 		QueueFree();
-	}
-	
+	}	
 }
