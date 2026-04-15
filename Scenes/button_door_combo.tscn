@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bsyc0edw7u6kj"]
 
-[ext_resource type="Script" uid="uid://cf5gnu1yt1kvo" path="res://ButtonController.cs" id="1_tu3yg"]
-[ext_resource type="Script" uid="uid://bkjb8ok0fvxgu" path="res://PuzzleDoor.cs" id="2_2c2ll"]
+[ext_resource type="Script" uid="uid://cf5gnu1yt1kvo" path="res://Scripts/ButtonController.cs" id="1_tu3yg"]
+[ext_resource type="Script" uid="uid://bkjb8ok0fvxgu" path="res://Scripts/PuzzleDoor.cs" id="2_2c2ll"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_72uig"]
 size = Vector2(12.5, 8)

@@ -10,8 +10,7 @@ public partial class EndDoor : Area2D {
 	}
 	private void OnBodyEntered(Node2D body) {
 		if (body is PlayerController playerController) {
-			var levelManager = GetNode<LevelManager>("/root/LevelManager");
-			levelManager.SwitchLevel(nextLevel);
+			LevelManager.Instance.LoadLevel(nextLevel);
 		}
 	}
 }

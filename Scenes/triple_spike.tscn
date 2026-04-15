@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cly64ow1gnjlm"]
 
-[ext_resource type="Script" uid="uid://dsni0anedjr16" path="res://DeadlyObject.cs" id="1_j75d0"]
+[ext_resource type="Script" uid="uid://dsni0anedjr16" path="res://Scripts/DeadlyObject.cs" id="1_j75d0"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_7k7bx"]
 

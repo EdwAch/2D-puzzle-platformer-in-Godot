@@ -11,6 +11,9 @@ public partial class PlayerController : CharacterBody2D
 	private float friction = 35f;
     // 35 is good for normal ground, less is more time to reach 0
 
+    public override void _Ready() {
+        LevelManager.Instance.RegisterPlayer(this);
+    }
 	public override void _PhysicsProcess(double delta) {
 		Vector2 currentVelocity = Velocity;
 		
