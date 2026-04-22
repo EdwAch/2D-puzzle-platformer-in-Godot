@@ -8,7 +8,10 @@ public partial class DeadlyObject : Area2D {
     }
 	private void OnBodyEntered(Node2D body) {
 		if (body is PlayerController playerController) {
-			playerController.Die();
+			playerController.HidePlayer();
+			playerController.DisableMovement();
+			playerController.MovePlayerToSafety();
+			UI.Instance.ShowEndUI(false);
 		}
 	}
 }

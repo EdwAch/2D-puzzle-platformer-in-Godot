@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c6rigrthyryyx" path="res://Scripts/EndDoor.cs" id="1_hbghi"]
 [ext_resource type="PackedScene" uid="uid://ltjo05to0qme" path="res://Levels/level_2.tscn" id="2_hbghi"]
+[ext_resource type="PackedScene" uid="uid://cj13rkdordyc2" path="res://Scenes/spike.tscn" id="3_3mhv4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0vkbl"]
 
@@ -45,3 +46,6 @@ shape = SubResource("RectangleShape2D_72uig")
 
 [node name="Spawnpoint" type="Marker2D" parent="." unique_id=2018823997]
 position = Vector2(114, 120)
+
+[node name="Spike" parent="." unique_id=855937449 instance=ExtResource("3_3mhv4")]
+position = Vector2(268, 130)

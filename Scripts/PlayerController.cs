@@ -1,18 +1,21 @@
 using Godot;
 using System;
 
-public partial class PlayerController : CharacterBody2D
-{
+public partial class PlayerController : CharacterBody2D {
+
+	public static PlayerController Instance { get; private set; }
 	[Export] private float speed = 300f; 
 	[Export] private float gravity = 400f;
 	[Export] private float jumpSpeed = -200f;
 	[Export] private ShapeCast2D groundChecker;
+	private bool canMove = true;
 	private bool doubleJump = false;
 	private float friction = 35f;
     // 35 is good for normal ground, less is more time to reach 0
 
     public override void _Ready() {
         LevelManager.Instance.RegisterPlayer(this);
+		Instance = this;
     }
 	public override void _PhysicsProcess(double delta) {
 		Vector2 currentVelocity = Velocity;
@@ -28,33 +31,37 @@ public partial class PlayerController : CharacterBody2D
 		bool leftDirection = Input.IsActionPressed("Left");
 		bool rightDirection = Input.IsActionPressed("Right");
 
-		if (direction !=0) {
-			currentVelocity.X = direction * speed;
-		} else if (IsGrounded() && currentVelocity.X != 0) {
-			currentVelocity.X = Mathf.MoveToward(Velocity.X, 0, friction);
-		} else if (!IsGrounded() && leftDirection && rightDirection && currentVelocity.X !=0) {
-			currentVelocity.X = direction * speed;
-		}
-		/*else if (!IsGrounded() && currentVelocity.X != 0) {
-			currentVelocity.X = Mathf.MoveToward(Velocity.X, 0, 10000f);
-		} Uncomment this if dont want movement when no movement key is pressed and midair
-		*/
+		if (canMove) {
+			if (direction !=0) {
+				currentVelocity.X = direction * speed;
+			} else if (IsGrounded() && currentVelocity.X != 0) {
+				currentVelocity.X = Mathf.MoveToward(Velocity.X, 0, friction);
+			} else if (!IsGrounded() && leftDirection && rightDirection && currentVelocity.X !=0) {
+				currentVelocity.X = direction * speed;
+			}
+			/*else if (!IsGrounded() && currentVelocity.X != 0) {
+				currentVelocity.X = Mathf.MoveToward(Velocity.X, 0, 10000f);
+			} Uncomment this if dont want movement when no movement key is pressed and midair
+			*/
 
-		if (IsGrounded() && Input.IsActionJustPressed("Jump")) {
-			currentVelocity.Y = jumpSpeed;
-			doubleJump = !doubleJump;
-		}
-		if (Input.IsActionJustReleased("Jump") && currentVelocity.Y < 0) {
-				currentVelocity.Y = currentVelocity.Y * 0.5f;
-		}
-		if (!IsGrounded() && Input.IsActionJustPressed("Jump") && doubleJump) {
-			currentVelocity.Y = jumpSpeed;
-			doubleJump = !doubleJump;
+			if (IsGrounded() && Input.IsActionJustPressed("Jump")) {
+				currentVelocity.Y = jumpSpeed;
+				doubleJump = !doubleJump;
+			}
+			if (Input.IsActionJustReleased("Jump") && currentVelocity.Y < 0) {
+					currentVelocity.Y = currentVelocity.Y * 0.5f;
+			}
+			if (!IsGrounded() && Input.IsActionJustPressed("Jump") && doubleJump) {
+				currentVelocity.Y = jumpSpeed;
+				doubleJump = !doubleJump;
+			}
+		} else {
+			currentVelocity.X = 0;
 		}
 		
 		Velocity = currentVelocity;
-
 		MoveAndSlide();
+		UI.Instance.UpdateStats(20, 30);
 	}
 
 	private bool IsGrounded() {
@@ -62,7 +69,24 @@ public partial class PlayerController : CharacterBody2D
 		return groundChecker.IsColliding();
 	}
 
-	public void Die() {
-		QueueFree();
-	}	
+	public void MovePlayerToSafety() {
+		GlobalPosition = Vector2.Zero;
+		gravity = 0f;
+	}
+	public void HidePlayer() {
+		this.Hide();
+	}
+
+	public void ShowPlayer() {
+		this.Show();
+	}
+
+	public void EnableMovement() {
+		canMove = true;
+		gravity = 500f;
+	}
+
+	public void DisableMovement() {
+		canMove = false;
+	}
 }

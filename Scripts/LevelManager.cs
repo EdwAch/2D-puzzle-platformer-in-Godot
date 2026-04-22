@@ -28,6 +28,8 @@ public partial class LevelManager : Node {
 		var spawn = newLevel.GetNode<Marker2D>("Spawnpoint");
 		if (spawn != null) {
 			_player.GlobalPosition = spawn.GlobalPosition;
+			PlayerController.Instance.ShowPlayer();
+			PlayerController.Instance.EnableMovement();
 		}
 	}
 }

@@ -10,7 +10,9 @@ public partial class EndDoor : Area2D {
 	}
 	private void OnBodyEntered(Node2D body) {
 		if (body is PlayerController playerController) {
-			LevelManager.Instance.LoadLevel(nextLevel);
+			UI.Instance.ShowEndUI(true);
+			PlayerController.Instance.DisableMovement();
+			PlayerController.Instance.HidePlayer();
 		}
 	}
 }
