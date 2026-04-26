@@ -11,6 +11,7 @@ public partial class DeadlyObject : Area2D {
 			playerController.HidePlayer();
 			playerController.DisableMovement();
 			playerController.MovePlayerToSafety();
+			GameManager.Instance.LevelEnded();
 			UI.Instance.ShowEndUI(false);
 		}
 	}

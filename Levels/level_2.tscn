@@ -1,11 +1,14 @@
 [gd_scene format=3 uid="uid://ltjo05to0qme"]
 
+[ext_resource type="Script" uid="uid://c6f8kuperq5xi" path="res://Scripts/Level.cs" id="1_ll1bl"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a72st"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_jg0dc"]
 size = Vector2(20, 20)
 
-[node name="Node2D" type="Node2D" unique_id=549540105]
+[node name="Level2" type="Node2D" unique_id=549540105]
+script = ExtResource("1_ll1bl")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=970828258]
 position = Vector2(173, 143)

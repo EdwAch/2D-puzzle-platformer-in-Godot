@@ -61,7 +61,6 @@ public partial class PlayerController : CharacterBody2D {
 		
 		Velocity = currentVelocity;
 		MoveAndSlide();
-		UI.Instance.UpdateStats(20, 30);
 	}
 
 	private bool IsGrounded() {

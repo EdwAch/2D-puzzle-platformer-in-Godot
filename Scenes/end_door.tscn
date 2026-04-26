@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://b3yriet48r7o7"]
+
+[ext_resource type="Script" uid="uid://c6rigrthyryyx" path="res://Scripts/EndDoor.cs" id="1_oujam"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_kmmve"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_72uig"]
+size = Vector2(2, 33.5)
+
+[node name="EndDoor" type="Node2D" unique_id=654912369]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=2072451745]
+modulate = Color(0.5882353, 0.29411766, 0, 1)
+position = Vector2(0, -2.503395e-06)
+scale = Vector2(2.2399902, 34.000004)
+mesh = SubResource("QuadMesh_kmmve")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1366064912]
+script = ExtResource("1_oujam")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=98129227]
+shape = SubResource("RectangleShape2D_72uig")

@@ -1,20 +1,18 @@
 [gd_scene format=3 uid="uid://cirgab7pnmul"]
 
-[ext_resource type="Script" uid="uid://c6rigrthyryyx" path="res://Scripts/EndDoor.cs" id="1_hbghi"]
-[ext_resource type="PackedScene" uid="uid://ltjo05to0qme" path="res://Levels/level_2.tscn" id="2_hbghi"]
+[ext_resource type="Script" uid="uid://c6f8kuperq5xi" path="res://Scripts/Level.cs" id="1_rf6l5"]
+[ext_resource type="PackedScene" uid="uid://b3yriet48r7o7" path="res://Scenes/end_door.tscn" id="2_rf6l5"]
 [ext_resource type="PackedScene" uid="uid://cj13rkdordyc2" path="res://Scenes/spike.tscn" id="3_3mhv4"]
+[ext_resource type="PackedScene" uid="uid://cly64ow1gnjlm" path="res://Scenes/triple_spike.tscn" id="5_rfktq"]
+[ext_resource type="PackedScene" uid="uid://brrhgu0ckfn85" path="res://Scenes/coin.tscn" id="5_syshm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0vkbl"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_10xm0"]
 size = Vector2(20, 20)
 
-[sub_resource type="QuadMesh" id="QuadMesh_kmmve"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_72uig"]
-size = Vector2(2, 33.5)
-
 [node name="Level1" type="Node2D" unique_id=1945057434]
+script = ExtResource("1_rf6l5")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1091166664]
 position = Vector2(173, 143)
@@ -28,24 +26,17 @@ shape = SubResource("RectangleShape2D_0vkbl")
 scale = Vector2(10, 0.5)
 mesh = SubResource("QuadMesh_10xm0")
 
-[node name="EndDoor" type="Node2D" parent="." unique_id=2114598220]
+[node name="EndDoor" parent="." unique_id=654912369 instance=ExtResource("2_rf6l5")]
 position = Vector2(320.5, 121)
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="EndDoor" unique_id=1403244211]
-modulate = Color(0.5882353, 0.29411766, 0, 1)
-position = Vector2(0, -2.503395e-06)
-scale = Vector2(2.2399902, 34.000004)
-mesh = SubResource("QuadMesh_kmmve")
-
-[node name="Area2D" type="Area2D" parent="EndDoor" unique_id=1379972718]
-script = ExtResource("1_hbghi")
-nextLevel = ExtResource("2_hbghi")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EndDoor/Area2D" unique_id=481942565]
-shape = SubResource("RectangleShape2D_72uig")
 
 [node name="Spawnpoint" type="Marker2D" parent="." unique_id=2018823997]
 position = Vector2(114, 120)
 
 [node name="Spike" parent="." unique_id=855937449 instance=ExtResource("3_3mhv4")]
 position = Vector2(268, 130)
+
+[node name="Coin" parent="." unique_id=861498250 instance=ExtResource("5_syshm")]
+position = Vector2(242, 112)
+
+[node name="TripleSpikes" parent="." unique_id=1494210746 instance=ExtResource("5_rfktq")]
+position = Vector2(710, 131)

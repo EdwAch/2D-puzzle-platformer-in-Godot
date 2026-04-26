@@ -6,7 +6,10 @@ public partial class GameManager : Node2D {
 	public static GameManager Instance { get; private set; }
 
 	[Export] private PackedScene[] levelList;
-	private static int levelNumber = 0;
+	private static int _levelNumber = 0;
+
+	private int _score;
+	private bool _levelEnded;
 	public override void _Ready() {
 		Instance = this;
 		LevelManager.Instance.LoadLevel(levelList[0]);
@@ -15,14 +18,42 @@ public partial class GameManager : Node2D {
 	public void GoToNextLevel() {
 		foreach (PackedScene level in levelList) {
 			int index = Array.IndexOf(levelList, level);
-			if (index > levelNumber) {
+			if (index > _levelNumber) {
 				LevelManager.Instance.CallDeferred(nameof(LevelManager.LoadLevel), level);
-				levelNumber++;
+				_levelNumber++;
 			}
 		}
+		LevelStarted();
+		_score = 0;
 	}
 
 	public void ReloadLevel() {
-		LevelManager.Instance.CallDeferred(nameof(LevelManager.LoadLevel), levelList[levelNumber]);
+		LevelManager.Instance.CallDeferred(nameof(LevelManager.LoadLevel), levelList[_levelNumber]);
+		LevelStarted();
+		_score = 0;
+	}
+
+	public void AddScore(int addScoreAmount) {
+		_score += addScoreAmount;
+	}
+
+	public int GetScore() {
+		return _score;
+	}
+
+	public void LevelEnded() {
+		_levelEnded = true;
+	}
+
+	public void LevelStarted() {
+		_levelEnded = false;
+	}
+
+	public bool DidLevelEnd() {
+		if (_levelEnded) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 }

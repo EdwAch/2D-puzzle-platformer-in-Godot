@@ -9,7 +9,8 @@ public partial class UI : CanvasLayer {
 	[Export] private RichTextLabel endTypeText;
 	[Export] private RichTextLabel endStatsText;
 
-	private bool restartLevel;
+	private bool _restartLevel;
+	private int _score;
 
     public override void _Ready() {
         Instance = this;
@@ -25,7 +26,7 @@ public partial class UI : CanvasLayer {
 	}
 
 	private void ButtonPressed() {
-		if (restartLevel) {
+		if (_restartLevel) {
 			GameManager.Instance.ReloadLevel();
 		} else {
 			GameManager.Instance.GoToNextLevel();
@@ -37,11 +38,11 @@ public partial class UI : CanvasLayer {
 		if (survived) {
 			endButton.Text = "Next Level";
 			endTypeText.Text = "[b]LEVEL COMPLETE!";
-			restartLevel = false;
+			_restartLevel = false;
 		} else {
 			endTypeText.Text = "LEVEL FAILED!";
 			endButton.Text = "Retry";
-			restartLevel = true;
+			_restartLevel = true;
 		}
 		endUI.Show();
 	}

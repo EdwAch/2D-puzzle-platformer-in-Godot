@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://brrhgu0ckfn85"]
+
+[ext_resource type="Script" uid="uid://dkfcpatj7b8i5" path="res://Scripts/CoinPickup.cs" id="1_2qo34"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rf6l5"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_syshm"]
+
+[node name="Coin" type="Area2D" unique_id=861498250]
+script = ExtResource("1_2qo34")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=848845095]
+shape = SubResource("CircleShape2D_rf6l5")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=1740144695]
+modulate = Color(1, 0.84313726, 0, 1)
+scale = Vector2(20.022696, 20.000006)
+mesh = SubResource("SphereMesh_syshm")
