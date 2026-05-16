@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://b1us1u1nbvisq"]
+
+[ext_resource type="Script" uid="uid://dsni0anedjr16" path="res://Scripts/DeadlyObject.cs" id="1_0jjbf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w67pk"]
+size = Vector2(10, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ql3of"]
+size = Vector3(10, 1, 1)
+
+[node name="DeadlyGround" type="Area2D" unique_id=1019992511]
+scale = Vector2(10, 10)
+script = ExtResource("1_0jjbf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1588458503]
+shape = SubResource("RectangleShape2D_w67pk")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=437384590]
+modulate = Color(1, 0, 0, 1)
+mesh = SubResource("BoxMesh_ql3of")

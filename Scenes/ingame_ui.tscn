@@ -28,7 +28,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/HUD" unique_id=1059170842]
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 2
@@ -53,12 +53,14 @@ theme_override_constants/margin_bottom = 3
 
 [node name="LabelText" type="RichTextLabel" parent="CanvasLayer/HUD/MarginContainer/Panel/MarginContainer" unique_id=1054144426]
 layout_mode = 2
+theme_override_font_sizes/normal_font_size = 32
 text = "score
 time"
 vertical_alignment = 1
 
 [node name="StatsText" type="RichTextLabel" parent="CanvasLayer/HUD/MarginContainer/Panel/MarginContainer" unique_id=1505817624]
 layout_mode = 2
+theme_override_font_sizes/normal_font_size = 32
 text = "3
 4"
 horizontal_alignment = 2

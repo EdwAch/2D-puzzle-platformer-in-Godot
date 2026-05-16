@@ -1,42 +1,360 @@
 [gd_scene format=3 uid="uid://cirgab7pnmul"]
 
 [ext_resource type="Script" uid="uid://c6f8kuperq5xi" path="res://Scripts/Level.cs" id="1_rf6l5"]
-[ext_resource type="PackedScene" uid="uid://b3yriet48r7o7" path="res://Scenes/end_door.tscn" id="2_rf6l5"]
+[ext_resource type="PackedScene" uid="uid://bsyc0edw7u6kj" path="res://Scenes/button_door_combo.tscn" id="2_syshm"]
 [ext_resource type="PackedScene" uid="uid://cj13rkdordyc2" path="res://Scenes/spike.tscn" id="3_3mhv4"]
-[ext_resource type="PackedScene" uid="uid://cly64ow1gnjlm" path="res://Scenes/triple_spike.tscn" id="5_rfktq"]
+[ext_resource type="PackedScene" uid="uid://c0nfsi4od1ogt" path="res://Scenes/safety_net.tscn" id="5_rfktq"]
 [ext_resource type="PackedScene" uid="uid://brrhgu0ckfn85" path="res://Scenes/coin.tscn" id="5_syshm"]
+[ext_resource type="PackedScene" uid="uid://cly64ow1gnjlm" path="res://Scenes/triple_spike.tscn" id="6_rfktq"]
+[ext_resource type="Script" uid="uid://bkjb8ok0fvxgu" path="res://Scripts/PuzzleDoor.cs" id="7_0urlm"]
+[ext_resource type="PackedScene" uid="uid://b1us1u1nbvisq" path="res://Scenes/deadly_ground.tscn" id="8_77x7w"]
+[ext_resource type="PackedScene" uid="uid://b3yriet48r7o7" path="res://Scenes/end_door.tscn" id="9_xoyoh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0vkbl"]
+size = Vector2(20, 313.33334)
 
 [sub_resource type="QuadMesh" id="QuadMesh_10xm0"]
 size = Vector2(20, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kmmve"]
+size = Vector2(1, 20)
+
+[sub_resource type="QuadMesh" id="QuadMesh_72uig"]
+size = Vector2(1, 20)
+
 [node name="Level1" type="Node2D" unique_id=1945057434]
 script = ExtResource("1_rf6l5")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1091166664]
-position = Vector2(173, 143)
-scale = Vector2(5.84, 1)
+[node name="ButtonDoorCombo" parent="." unique_id=903838637 instance=ExtResource("2_syshm")]
+z_index = 1
+position = Vector2(1121, 72)
+scale = Vector2(-12, 13.994)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1737402212]
+[node name="Area2D" parent="ButtonDoorCombo/ButtonCombo" parent_id_path=PackedInt32Array(903838637, 1768127027) index="0" unique_id=1765889842 node_paths=PackedStringArray("puzzleDoor")]
+puzzleDoor = [NodePath("../../Door")]
+
+[node name="CollisionShape2D" parent="ButtonDoorCombo/Door" parent_id_path=PackedInt32Array(903838637, 1516421604) index="0" unique_id=1871321836]
+position = Vector2(0, 4.5353913)
+
+[node name="MeshInstance2D" parent="ButtonDoorCombo/Door" parent_id_path=PackedInt32Array(903838637, 1516421604) index="1" unique_id=1412607311]
+position = Vector2(0, 4.446495)
+scale = Vector2(1, 0.5553505)
+
+[node name="ground" type="Node2D" parent="." unique_id=2086829408]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="ground" unique_id=1091166664]
+position = Vector2(175, 153)
+scale = Vector2(50, 3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground/StaticBody2D" unique_id=1737402212]
+position = Vector2(0, 73.333336)
 scale = Vector2(10, 0.5)
 shape = SubResource("RectangleShape2D_0vkbl")
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D" unique_id=476209117]
-scale = Vector2(10, 0.5)
+[node name="MeshInstance2D" type="MeshInstance2D" parent="ground/StaticBody2D" unique_id=476209117]
+position = Vector2(0, 73.333336)
+scale = Vector2(10, 7.8333335)
 mesh = SubResource("QuadMesh_10xm0")
 
-[node name="EndDoor" parent="." unique_id=654912369 instance=ExtResource("2_rf6l5")]
-position = Vector2(320.5, 121)
+[node name="StaticBody2D2" type="StaticBody2D" parent="ground" unique_id=720436673]
+position = Vector2(2351, 82)
+rotation = -3.1415925
+scale = Vector2(0.10372162, -0.04476732)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground/StaticBody2D2" unique_id=694888067]
+position = Vector2(0, 73.333336)
+scale = Vector2(10, 0.5)
+shape = SubResource("RectangleShape2D_0vkbl")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="ground/StaticBody2D2" unique_id=1025317476]
+position = Vector2(0, 73.333336)
+scale = Vector2(10, 7.8333335)
+mesh = SubResource("QuadMesh_10xm0")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="ground" unique_id=887334232]
+position = Vector2(2263, 32)
+rotation = -3.1415925
+scale = Vector2(0.10372162, -0.04476732)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground/StaticBody2D3" unique_id=1143102077]
+position = Vector2(0, 73.333336)
+scale = Vector2(10, 0.5)
+shape = SubResource("RectangleShape2D_0vkbl")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="ground/StaticBody2D3" unique_id=834101446]
+position = Vector2(0, 73.333336)
+scale = Vector2(10, 7.8333335)
+mesh = SubResource("QuadMesh_10xm0")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="ground" unique_id=815541218]
+position = Vector2(2313, -28)
+rotation = -3.1415925
+scale = Vector2(0.10372162, -0.04476732)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground/StaticBody2D4" unique_id=173395169]
+position = Vector2(0, 73.333336)
+scale = Vector2(10, 0.5)
+shape = SubResource("RectangleShape2D_0vkbl")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="ground/StaticBody2D4" unique_id=1175642662]
+position = Vector2(0, 73.333336)
+scale = Vector2(10, 7.8333335)
+mesh = SubResource("QuadMesh_10xm0")
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="ground" unique_id=825269200]
+position = Vector2(2468, -54)
+scale = Vector2(0.53627837, 0.04476732)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground/StaticBody2D5" unique_id=137396602]
+position = Vector2(0, 73.333336)
+scale = Vector2(10, 0.5)
+shape = SubResource("RectangleShape2D_0vkbl")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="ground/StaticBody2D5" unique_id=1589221169]
+position = Vector2(0, 73.333336)
+scale = Vector2(10, 7.8333335)
+mesh = SubResource("QuadMesh_10xm0")
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="ground" unique_id=1170972138]
+position = Vector2(2647.0002, -103)
+scale = Vector2(0.53627837, 0.04476732)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground/StaticBody2D6" unique_id=1107242052]
+position = Vector2(0, 73.333336)
+scale = Vector2(10, 0.5)
+shape = SubResource("RectangleShape2D_0vkbl")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="ground/StaticBody2D6" unique_id=43047884]
+position = Vector2(0, 73.333336)
+scale = Vector2(10, 7.8333335)
+mesh = SubResource("QuadMesh_10xm0")
+
+[node name="StaticBody2D7" type="StaticBody2D" parent="ground" unique_id=407871643]
+position = Vector2(2647.0002, -9.000008)
+scale = Vector2(0.53627837, 0.0847674)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground/StaticBody2D7" unique_id=1000970861]
+position = Vector2(0, 73.333336)
+scale = Vector2(10, 0.5)
+shape = SubResource("RectangleShape2D_0vkbl")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="ground/StaticBody2D7" unique_id=1997836244]
+position = Vector2(0, 73.333336)
+scale = Vector2(10, 7.8333335)
+mesh = SubResource("QuadMesh_10xm0")
+
+[node name="StaticBody2D8" type="StaticBody2D" parent="ground" unique_id=2110731504]
+position = Vector2(3121.0002, -103)
+scale = Vector2(0.53627837, 0.04476732)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground/StaticBody2D8" unique_id=18273465]
+position = Vector2(0, 73.333336)
+scale = Vector2(10, 0.5)
+shape = SubResource("RectangleShape2D_0vkbl")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="ground/StaticBody2D8" unique_id=942419774]
+position = Vector2(0, 73.333336)
+scale = Vector2(10, 7.8333335)
+mesh = SubResource("QuadMesh_10xm0")
 
 [node name="Spawnpoint" type="Marker2D" parent="." unique_id=2018823997]
+visible = false
 position = Vector2(114, 120)
 
 [node name="Spike" parent="." unique_id=855937449 instance=ExtResource("3_3mhv4")]
-position = Vector2(268, 130)
+position = Vector2(362, 128)
 
 [node name="Coin" parent="." unique_id=861498250 instance=ExtResource("5_syshm")]
-position = Vector2(242, 112)
+position = Vector2(712, 52)
 
-[node name="TripleSpikes" parent="." unique_id=1494210746 instance=ExtResource("5_rfktq")]
-position = Vector2(710, 131)
+[node name="Coin2" parent="." unique_id=1232264489 instance=ExtResource("5_syshm")]
+position = Vector2(2224, -176)
+
+[node name="SafetyNet" parent="." unique_id=693047989 instance=ExtResource("5_rfktq")]
+visible = false
+position = Vector2(0, 8)
+
+[node name="TripleSpikes" parent="." unique_id=1494210746 instance=ExtResource("6_rfktq")]
+position = Vector2(2214, 130)
+
+[node name="DeadlyGround" parent="." unique_id=1019992511 instance=ExtResource("8_77x7w")]
+position = Vector2(2955.0002, 135)
+scale = Vector2(87.57956, 8.114582)
+
+[node name="Spike2" parent="." unique_id=1083087655 instance=ExtResource("3_3mhv4")]
+position = Vector2(2468, -64)
+
+[node name="ButtonDoorCombo2" parent="." unique_id=863438357 instance=ExtResource("2_syshm")]
+position = Vector2(2646, -43)
+rotation = 3.1415927
+scale = Vector2(6.002, -7)
+
+[node name="Area2D" parent="ButtonDoorCombo2/ButtonCombo" parent_id_path=PackedInt32Array(863438357, 1768127027) index="0" unique_id=1765889842 node_paths=PackedStringArray("puzzleDoor")]
+puzzleDoor = [NodePath("../../Door"), NodePath("../../Door2")]
+
+[node name="Button" parent="ButtonDoorCombo2/ButtonCombo" parent_id_path=PackedInt32Array(863438357, 1768127027) index="1" unique_id=207780295]
+modulate = Color(0, 0, 1, 1)
+
+[node name="Door" parent="ButtonDoorCombo2" index="1" unique_id=1516421604]
+position = Vector2(73.4755, -4.714286)
+rotation = 1.5707964
+startsActive = false
+
+[node name="MeshInstance2D" parent="ButtonDoorCombo2/Door" index="1" unique_id=1412607311]
+modulate = Color(0, 0, 1, 1)
+
+[node name="Door2" type="StaticBody2D" parent="ButtonDoorCombo2" unique_id=1798426870 node_paths=PackedStringArray("doorCollisionShape2D")]
+position = Vector2(-35.988003, -7.428571)
+scale = Vector2(20, 0.326)
+script = ExtResource("7_0urlm")
+doorCollisionShape2D = NodePath("CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ButtonDoorCombo2/Door2" unique_id=1059525187]
+shape = SubResource("RectangleShape2D_kmmve")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="ButtonDoorCombo2/Door2" unique_id=3892188]
+modulate = Color(0, 0, 1, 1)
+mesh = SubResource("QuadMesh_72uig")
+
+[node name="Control" type="Control" parent="." unique_id=1898862747]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 200.0
+offset_bottom = 50.0
+scale = Vector2(0.25, 0.25)
+pivot_offset = Vector2(100, 25)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control" unique_id=1492600194]
+texture_filter = 1
+layout_mode = 0
+offset_left = -100.0
+offset_top = 145.0
+offset_right = 598.0
+offset_bottom = 233.0
+theme_override_font_sizes/normal_font_size = 64
+theme_override_font_sizes/bold_font_size = 64
+bbcode_enabled = true
+text = "A/D to move left/right"
+fit_content = true
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Control" unique_id=1142048579]
+layout_mode = 0
+offset_left = 768.0
+offset_top = 13.0
+offset_right = 1524.0
+offset_bottom = 238.0
+theme_override_font_sizes/normal_font_size = 64
+theme_override_font_sizes/bold_font_size = 64
+bbcode_enabled = true
+text = "Space to jump
+Anything in [color=#ff0000]red[/color] kills you"
+fit_content = true
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="Control" unique_id=57999723]
+layout_mode = 0
+offset_left = 1768.0
+offset_top = -7.0
+offset_right = 2458.0
+offset_bottom = 169.0
+theme_override_font_sizes/normal_font_size = 64
+theme_override_font_sizes/bold_font_size = 64
+bbcode_enabled = true
+text = "Space in midair to double jump"
+fit_content = true
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="Control" unique_id=1188043410]
+layout_mode = 0
+offset_left = 2700.0
+offset_top = -99.0
+offset_right = 3390.0
+offset_bottom = 165.0
+theme_override_font_sizes/normal_font_size = 64
+theme_override_font_sizes/bold_font_size = 64
+bbcode_enabled = true
+text = "[color=#ffd700]Coins[/color] give you [b]500[/b] points, they can be obvious or hidden"
+fit_content = true
+
+[node name="RichTextLabel5" type="RichTextLabel" parent="Control" unique_id=866101304]
+layout_mode = 0
+offset_left = 3904.0
+offset_top = -207.0
+offset_right = 4594.0
+offset_bottom = -31.0
+theme_override_font_sizes/normal_font_size = 64
+theme_override_font_sizes/bold_font_size = 64
+bbcode_enabled = true
+text = "Buttons open the doors of their colors, the doors reappear if the button is pressed again"
+fit_content = true
+
+[node name="RichTextLabel6" type="RichTextLabel" parent="Control" unique_id=1374086653]
+layout_mode = 0
+offset_left = 5548.0
+offset_top = 9.0
+offset_right = 6238.0
+offset_bottom = 185.0
+theme_override_font_sizes/normal_font_size = 64
+theme_override_font_sizes/bold_font_size = 64
+bbcode_enabled = true
+text = "Some buttons may open many doors"
+fit_content = true
+
+[node name="RichTextLabel7" type="RichTextLabel" parent="Control" unique_id=1019835191]
+layout_mode = 0
+offset_left = 7044.0
+offset_top = -63.0
+offset_right = 7734.0
+offset_bottom = 201.0
+theme_override_font_sizes/normal_font_size = 64
+theme_override_font_sizes/bold_font_size = 64
+bbcode_enabled = true
+text = "Now a basic implementation of everything"
+fit_content = true
+
+[node name="RichTextLabel8" type="RichTextLabel" parent="Control" unique_id=642670327]
+layout_mode = 0
+offset_left = 13896.0
+offset_top = -47.0
+offset_right = 14586.0
+offset_bottom = 217.0
+theme_override_font_sizes/normal_font_size = 64
+theme_override_font_sizes/bold_font_size = 64
+bbcode_enabled = true
+text = "This is the end, go through the brown"
+fit_content = true
+
+[node name="StaticBody2D9" type="StaticBody2D" parent="." unique_id=1993434368]
+position = Vector2(3754.9998, -25.999992)
+rotation = 1.5707964
+scale = Vector2(1.7334299, 0.04476732)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D9" unique_id=2043510094]
+position = Vector2(0, 73.333336)
+scale = Vector2(10, 0.5)
+shape = SubResource("RectangleShape2D_0vkbl")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D9" unique_id=2066550456]
+position = Vector2(0, 73.333336)
+scale = Vector2(10, 7.8333335)
+mesh = SubResource("QuadMesh_10xm0")
+
+[node name="StaticBody2D10" type="StaticBody2D" parent="." unique_id=351210891]
+position = Vector2(-100.00006, -23)
+rotation = 1.5707964
+scale = Vector2(1.7334299, 0.04476732)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D10" unique_id=1022441357]
+position = Vector2(0, 73.333336)
+scale = Vector2(10, 0.5)
+shape = SubResource("RectangleShape2D_0vkbl")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D10" unique_id=732100956]
+position = Vector2(0, 73.333336)
+scale = Vector2(10, 7.8333335)
+mesh = SubResource("QuadMesh_10xm0")
+
+[node name="EndDoor" parent="." unique_id=654912369 instance=ExtResource("9_xoyoh")]
+position = Vector2(3746.9998, 112)
+scale = Vector2(1.72, 1.56)
+
+[editable path="ButtonDoorCombo"]
+[editable path="ButtonDoorCombo2"]

@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://c0nfsi4od1ogt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0vkbl"]
+
+[node name="SafetyNet" type="StaticBody2D" unique_id=693047989]
+scale = Vector2(0.1, 0.3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=621155174]
+scale = Vector2(10, 0.5)
+shape = SubResource("RectangleShape2D_0vkbl")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=63609183]
+position = Vector2(0, -66.666664)
+scale = Vector2(10, 0.5)
+shape = SubResource("RectangleShape2D_0vkbl")

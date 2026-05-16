@@ -26,7 +26,7 @@ rotation = -1.5707964
 scale = Vector2(1.5, 0.75)
 script = ExtResource("3_i5u4n")
 gravity = 500.0
-jumpSpeed = -250.0
+jumpSpeed = -275.0
 groundChecker = NodePath("ShapeCast2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=485363316]
