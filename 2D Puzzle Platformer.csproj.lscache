@@ -61,6 +61,7 @@ Scripts/
  DeadlyObject.cs
  EndDoor.cs
  GameManager.cs
+ Ice.cs
  Level.cs
  LevelContainer.cs
  LevelManager.cs

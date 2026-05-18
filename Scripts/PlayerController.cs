@@ -4,14 +4,19 @@ using System;
 public partial class PlayerController : CharacterBody2D {
 
 	public static PlayerController Instance { get; private set; }
-	[Export] private float speed = 300f; 
-	[Export] private float gravity = 400f;
-	[Export] private float jumpSpeed = -200f;
-	[Export] private ShapeCast2D groundChecker;
-	private bool canMove = true;
-	private bool doubleJump = false;
-	private float friction = 35f;
+	[Export] private float _speed = 300f; 
+	[Export] private float _gravity = 400f;
+	[Export] private float _jumpSpeed = -200f;
+	[Export] private ShapeCast2D _groundChecker;
+	private bool _canMove = true;
+	private bool _doubleJump = false;
+	private float _friction = 1200f;
     // 35 is good for normal ground, less is more time to reach 0
+	private float _frictionModifier = 1f;
+	private float _acceleration = 1500f;
+	private float _windForce = 0f;
+	// 600 wind force adds +10 to velocity
+	private float _currentWindVelocityX = 0f;
 
     public override void _Ready() {
         LevelManager.Instance.RegisterPlayer(this);
@@ -21,7 +26,7 @@ public partial class PlayerController : CharacterBody2D {
 		Vector2 currentVelocity = Velocity;
 		
 		if (!IsGrounded()) {
-			currentVelocity.Y += gravity * (float)delta;	
+			currentVelocity.Y += _gravity * (float)delta;	
 		} else if (currentVelocity.Y > 0) {
 			currentVelocity.Y = 0;
 		}
@@ -31,46 +36,73 @@ public partial class PlayerController : CharacterBody2D {
 		bool leftDirection = Input.IsActionPressed("Left");
 		bool rightDirection = Input.IsActionPressed("Right");
 
-		if (canMove) {
+		if (_canMove) {
+			float maxVelocityX = direction * _speed;
 			if (direction !=0) {
-				currentVelocity.X = direction * speed;
+				currentVelocity.X = Mathf.MoveToward(Velocity.X, maxVelocityX, _acceleration * (float)delta);
 			} else if (IsGrounded() && currentVelocity.X != 0) {
-				currentVelocity.X = Mathf.MoveToward(Velocity.X, 0, friction);
-			} else if (!IsGrounded() && leftDirection && rightDirection && currentVelocity.X !=0) {
-				currentVelocity.X = direction * speed;
+				currentVelocity.X = Mathf.MoveToward(Velocity.X, 0, _friction * _frictionModifier * (float)delta);
+			} else if (!IsGrounded() && leftDirection && rightDirection && currentVelocity.X != 0) {
+				currentVelocity.X = Mathf.MoveToward(Velocity.X, maxVelocityX, _acceleration);
 			}
 			/*else if (!IsGrounded() && currentVelocity.X != 0) {
 				currentVelocity.X = Mathf.MoveToward(Velocity.X, 0, 10000f);
 			} Uncomment this if dont want movement when no movement key is pressed and midair
 			*/
+			if (_windForce != 0) {
+				if (IsGrounded() && _frictionModifier == 1) {
+					_currentWindVelocityX = _windForce;
+				} else {
+					_currentWindVelocityX = 0;
+				}
+			}
 
 			if (IsGrounded() && Input.IsActionJustPressed("Jump")) {
-				currentVelocity.Y = jumpSpeed;
-				doubleJump = !doubleJump;
+				currentVelocity.Y = _jumpSpeed;
+				_doubleJump = !_doubleJump;
 			}
 			if (Input.IsActionJustReleased("Jump") && currentVelocity.Y < 0) {
 					currentVelocity.Y = currentVelocity.Y * 0.5f;
 			}
-			if (!IsGrounded() && Input.IsActionJustPressed("Jump") && doubleJump) {
-				currentVelocity.Y = jumpSpeed;
-				doubleJump = !doubleJump;
+			if (!IsGrounded() && Input.IsActionJustPressed("Jump") && _doubleJump) {
+				currentVelocity.Y = _jumpSpeed;
+				_doubleJump = !_doubleJump;
 			}
 		} else {
 			currentVelocity.X = 0;
+			_currentWindVelocityX = 0;
 		}
 		
+		currentVelocity.X += _currentWindVelocityX * (float)delta;
+
 		Velocity = currentVelocity;
 		MoveAndSlide();
 	}
 
 	private bool IsGrounded() {
-		groundChecker.ForceShapecastUpdate();
-		return groundChecker.IsColliding();
+		_groundChecker.ForceShapecastUpdate();
+		return _groundChecker.IsColliding();
+	}
+
+	public void ChangeFrictionModifier() {
+		if (_frictionModifier != 1) {
+			_frictionModifier = 1f;
+		} else {
+			_frictionModifier = 0.15f;
+		}
+	}
+
+	public void ChangeAcceleration() {
+		if (_acceleration != 1500) {
+			_acceleration = 1500f;
+		} else {
+			_acceleration = 250f;
+		}
 	}
 
 	public void MovePlayerToSafety() {
 		GlobalPosition = Vector2.Zero;
-		gravity = 0f;
+		_gravity = 0f;
 	}
 	public void HidePlayer() {
 		this.Hide();
@@ -81,11 +113,11 @@ public partial class PlayerController : CharacterBody2D {
 	}
 
 	public void EnableMovement() {
-		canMove = true;
-		gravity = 500f;
+		_canMove = true;
+		_gravity = 500f;
 	}
 
 	public void DisableMovement() {
-		canMove = false;
+		_canMove = false;
 	}
 }

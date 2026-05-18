@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://dyt525homcrip"]
 
 [ext_resource type="Script" uid="uid://bb8yxwg3yfq77" path="res://Scripts/GameManager.cs" id="1_x2gyv"]
-[ext_resource type="PackedScene" uid="uid://cirgab7pnmul" path="res://Levels/level_1.tscn" id="2_q4qju"]
 [ext_resource type="PackedScene" uid="uid://ltjo05to0qme" path="res://Levels/level_2.tscn" id="3_1ef35"]
 [ext_resource type="Script" uid="uid://dsss21wn8o3k7" path="res://Scripts/PlayerController.cs" id="3_i5u4n"]
 [ext_resource type="Script" uid="uid://cif7jwawbqdws" path="res://Scripts/LevelContainer.cs" id="4_1ef35"]
@@ -18,16 +17,14 @@ height = 20.0
 [node name="World" type="Node2D" unique_id=1179167687]
 scale = Vector2(2, 2)
 script = ExtResource("1_x2gyv")
-levelList = Array[PackedScene]([ExtResource("2_q4qju"), ExtResource("3_1ef35")])
+levelList = Array[PackedScene]([ExtResource("3_1ef35")])
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=741648026 node_paths=PackedStringArray("groundChecker")]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=741648026 node_paths=PackedStringArray("_groundChecker")]
 z_index = 10
 rotation = -1.5707964
 scale = Vector2(1.5, 0.75)
 script = ExtResource("3_i5u4n")
-gravity = 500.0
-jumpSpeed = -275.0
-groundChecker = NodePath("ShapeCast2D")
+_groundChecker = NodePath("ShapeCast2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=485363316]
 shape = SubResource("CapsuleShape2D_0vkbl")
