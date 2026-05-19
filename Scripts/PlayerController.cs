@@ -55,6 +55,8 @@ public partial class PlayerController : CharacterBody2D {
 				} else {
 					_currentWindVelocityX = 0;
 				}
+			} else {
+				_currentWindVelocityX = 0;
 			}
 
 			if (IsGrounded() && Input.IsActionJustPressed("Jump")) {
@@ -98,6 +100,10 @@ public partial class PlayerController : CharacterBody2D {
 		} else {
 			_acceleration = 250f;
 		}
+	}
+
+	public void ChangeWindForce(int value) {
+		_windForce = value;
 	}
 
 	public void MovePlayerToSafety() {

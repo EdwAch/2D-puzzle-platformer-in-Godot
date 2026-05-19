@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bx8ontbj43gop"]
+
+[ext_resource type="Script" uid="uid://dbigo0axityu0" path="res://Scripts/Ice.cs" id="1_fse5i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_arsda"]
+size = Vector2(20, 15)
+
+[sub_resource type="QuadMesh" id="QuadMesh_dgq3b"]
+
+[node name="Ice" type="Area2D" unique_id=1768849772]
+scale = Vector2(15, 1)
+script = ExtResource("1_fse5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=24368903]
+position = Vector2(0, -1)
+scale = Vector2(1, 0.4)
+shape = SubResource("RectangleShape2D_arsda")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=313448762]
+modulate = Color(0.11764706, 1, 1, 1)
+position = Vector2(0, 3.5)
+scale = Vector2(20, 11)
+mesh = SubResource("QuadMesh_dgq3b")

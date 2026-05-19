@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://cs1p5tq11vt47"]
+
+[ext_resource type="Script" uid="uid://dpki316mo1cxq" path="res://Scripts/WindArea.cs" id="1_nbmjo"]
+[ext_resource type="Texture2D" uid="uid://n1uyjq68bfk0" path="res://Textures/wind.png" id="2_w7n5y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kbe2v"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kbe2v"]
+lifetime_randomness = 0.4
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(75, 0, 0)
+emission_shape = 3
+emission_box_extents = Vector3(1, 80, 1)
+spread = 2.0
+initial_velocity_min = -200.0
+initial_velocity_max = -10.0
+gravity = Vector3(-100, 0, 0)
+linear_accel_min = -2.0000021
+linear_accel_max = -2.2351742e-06
+scale_min = 0.59999996
+scale_max = 1.1999999
+
+[node name="WindSpot" type="Area2D" unique_id=1512867740]
+script = ExtResource("1_nbmjo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1446325693]
+scale = Vector2(10, 10)
+shape = SubResource("RectangleShape2D_kbe2v")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1263439148]
+amount = 12
+texture = ExtResource("2_w7n5y")
+lifetime = 1.2
+explosiveness = 0.1
+randomness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_kbe2v")
