@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://ctlnoem7a1kji"]
+
+[ext_resource type="PackedScene" uid="uid://cs1p5tq11vt47" path="res://Scenes/wind_spot.tscn" id="1_cdjuv"]
+[ext_resource type="Script" uid="uid://dptig1s6d74u7" path="res://Scripts/VerticalWindArea.cs" id="2_jcox7"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_11mod"]
+load_path = "res://.godot/imported/wind.png-24a058b676cbd8386021204f86d60bdf.ctex"
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hyair"]
+lifetime_randomness = 0.4
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(75, 0, 0)
+emission_shape = 3
+emission_box_extents = Vector3(1, 80, 1)
+angle_min = 90.000015
+angle_max = 90.000015
+spread = 2.0
+initial_velocity_min = -200.0
+initial_velocity_max = -10.0
+gravity = Vector3(0, -10, 0)
+linear_accel_min = -2.0000021
+linear_accel_max = -2.2351742e-06
+scale_min = 0.59999996
+scale_max = 1.1999999
+
+[node name="VerticalWindSpot" unique_id=1512867740 instance=ExtResource("1_cdjuv")]
+rotation = 1.5707964
+script = ExtResource("2_jcox7")
+
+[node name="GPUParticles2D" parent="." index="1" unique_id=1263439148]
+texture = SubResource("CompressedTexture2D_11mod")
+process_material = SubResource("ParticleProcessMaterial_hyair")

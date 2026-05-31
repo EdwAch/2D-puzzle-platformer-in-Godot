@@ -17,6 +17,8 @@ public partial class PlayerController : CharacterBody2D {
 	private float _windForce = 0f;
 	// 600 wind force adds +10 to velocity
 	private float _currentWindVelocityX = 0f;
+	private float _currentWindVelocityY = 0f;
+	private bool _verticalWind = false;
 
     public override void _Ready() {
         LevelManager.Instance.RegisterPlayer(this);
@@ -49,7 +51,7 @@ public partial class PlayerController : CharacterBody2D {
 				currentVelocity.X = Mathf.MoveToward(Velocity.X, 0, 10000f);
 			} Uncomment this if dont want movement when no movement key is pressed and midair
 			*/
-			if (_windForce != 0) {
+			if (_windForce != 0 && !_verticalWind) {
 				if (IsGrounded() && _frictionModifier == 1) {
 					_currentWindVelocityX = _windForce;
 				} else {
@@ -57,6 +59,12 @@ public partial class PlayerController : CharacterBody2D {
 				}
 			} else {
 				_currentWindVelocityX = 0;
+			} 
+
+			if (_windForce != 0 && _verticalWind) {
+				_currentWindVelocityY = _windForce;
+			} else {
+				_currentWindVelocityY = 0;
 			}
 
 			if (IsGrounded() && Input.IsActionJustPressed("Jump")) {
@@ -76,6 +84,7 @@ public partial class PlayerController : CharacterBody2D {
 		}
 		
 		currentVelocity.X += _currentWindVelocityX * (float)delta;
+		currentVelocity.Y += _currentWindVelocityY * (float)delta;
 
 		Velocity = currentVelocity;
 		MoveAndSlide();
@@ -105,10 +114,18 @@ public partial class PlayerController : CharacterBody2D {
 	public void ChangeWindForce(int value) {
 		_windForce = value;
 	}
+	
+	public void ChangeWindDirection() {
+		_verticalWind = !_verticalWind;
+	}
 
 	public void MovePlayerToSafety() {
 		GlobalPosition = Vector2.Zero;
 		_gravity = 0f;
+	}
+
+	public void MovePlayerToLocation(Marker2D location) {
+		GlobalPosition = location.GlobalPosition;
 	}
 	public void HidePlayer() {
 		this.Hide();

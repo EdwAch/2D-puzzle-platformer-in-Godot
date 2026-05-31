@@ -357,4 +357,5 @@ position = Vector2(3746.9998, 112)
 scale = Vector2(1.72, 1.56)
 
 [editable path="ButtonDoorCombo"]
+[editable path="TripleSpikes"]
 [editable path="ButtonDoorCombo2"]

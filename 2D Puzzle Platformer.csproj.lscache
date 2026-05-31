@@ -36,7 +36,7 @@ TemporaryDependencyNodeTargetIdentifier=net8.0
 /nostdlib+
 /errorreport:prompt
 /warn:8
-/define:GODOT;GODOT_LINUXBSD;GODOT_PC;GODOT4;GODOT4_6;GODOT4_6_2;GODOT4_OR_GREATER;GODOT4_0_OR_GREATER;GODOT4_1_OR_GREATER;GODOT4_2_OR_GREATER;GODOT4_3_OR_GREATER;GODOT4_4_OR_GREATER;GODOT4_5_OR_GREATER;GODOT4_6_OR_GREATER;GODOT4_6_0_OR_GREATER;GODOT4_6_1_OR_GREATER;GODOT4_6_2_OR_GREATER;TRACE;DEBUG;TOOLS;NET;NET8_0;NETCOREAPP;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP1_0_OR_GREATER;NETCOREAPP1_1_OR_GREATER;NETCOREAPP2_0_OR_GREATER;NETCOREAPP2_1_OR_GREATER;NETCOREAPP2_2_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER
+/define:GODOT;GODOT_LINUXBSD;GODOT_PC;GODOT4;GODOT4_6;GODOT4_6_3;GODOT4_OR_GREATER;GODOT4_0_OR_GREATER;GODOT4_1_OR_GREATER;GODOT4_2_OR_GREATER;GODOT4_3_OR_GREATER;GODOT4_4_OR_GREATER;GODOT4_5_OR_GREATER;GODOT4_6_OR_GREATER;GODOT4_6_0_OR_GREATER;GODOT4_6_1_OR_GREATER;GODOT4_6_2_OR_GREATER;GODOT4_6_3_OR_GREATER;TRACE;DEBUG;TOOLS;NET;NET8_0;NETCOREAPP;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP1_0_OR_GREATER;NETCOREAPP1_1_OR_GREATER;NETCOREAPP2_0_OR_GREATER;NETCOREAPP2_1_OR_GREATER;NETCOREAPP2_2_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER
 /highentropyva+
 /debug+
 /debug:portable
@@ -67,14 +67,16 @@ Scripts/
  LevelManager.cs
  PlayerController.cs
  PuzzleDoor.cs
+ Teleporter.cs
  UI.cs
+ VerticalWindArea.cs
  WindArea.cs
 
 [metadataReferences]
 <NUGET>/
- godotsharp/4.6.2/lib/net8.0/GodotSharp.dll
- godotsharpeditor/4.6.2/lib/net8.0/GodotSharpEditor.dll
- microsoft.netcore.app.ref/8.0.26/ref/net8.0/
+ godotsharp/4.6.3/lib/net8.0/GodotSharp.dll
+ godotsharpeditor/4.6.3/lib/net8.0/GodotSharpEditor.dll
+ microsoft.netcore.app.ref/8.0.27/ref/net8.0/
   Microsoft.CSharp.dll
   Microsoft.VisualBasic.Core.dll
   Microsoft.VisualBasic.dll
@@ -240,12 +242,12 @@ Scripts/
   WindowsBase.dll
 
 [analyzerReferences]
-<DOTNET>/sdk/10.0.106/Sdks/Microsoft.NET.Sdk/analyzers/
+<DOTNET>/sdk/10.0.108/Sdks/Microsoft.NET.Sdk/analyzers/
  Microsoft.CodeAnalysis.CSharp.NetAnalyzers.dll
  Microsoft.CodeAnalysis.NetAnalyzers.dll
 <NUGET>/
- godot.sourcegenerators/4.6.2/analyzers/dotnet/cs/Godot.SourceGenerators.dll
- microsoft.netcore.app.ref/8.0.26/analyzers/dotnet/cs/
+ godot.sourcegenerators/4.6.3/analyzers/dotnet/cs/Godot.SourceGenerators.dll
+ microsoft.netcore.app.ref/8.0.27/analyzers/dotnet/cs/
   Microsoft.Interop.ComInterfaceGenerator.dll
   Microsoft.Interop.JavaScript.JSImportGenerator.dll
   Microsoft.Interop.LibraryImportGenerator.dll
@@ -256,4 +258,4 @@ Scripts/
 [analyzerConfigFiles]
 .editorconfig
 .godot/mono/temp/obj/Debug/2D Puzzle Platformer.GeneratedMSBuildEditorConfig.editorconfig
-<DOTNET>/sdk/10.0.106/Sdks/Microsoft.NET.Sdk/analyzers/build/config/analysislevel_8_default.globalconfig
+<DOTNET>/sdk/10.0.108/Sdks/Microsoft.NET.Sdk/analyzers/build/config/analysislevel_8_default.globalconfig
