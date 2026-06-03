@@ -59,6 +59,7 @@ Scripts/
  ButtonController.cs
  CoinPickup.cs
  DeadlyObject.cs
+ DisappearBackground.cs
  EndDoor.cs
  GameManager.cs
  Ice.cs

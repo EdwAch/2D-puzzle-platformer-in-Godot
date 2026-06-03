@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://ddna045rfwn3k"]
+
+[ext_resource type="Script" uid="uid://cf3vbn6wraobg" path="res://Scripts/Teleporter.cs" id="1_uqvdf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vs4e2"]
+size = Vector2(3, 20)
+
+[sub_resource type="QuadMesh" id="QuadMesh_q6jj4"]
+size = Vector2(3, 20)
+
+[node name="Teleporter" type="Area2D" unique_id=1955934454 node_paths=PackedStringArray("_location")]
+scale = Vector2(3, 9)
+script = ExtResource("1_uqvdf")
+_location = NodePath("Marker2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1654710985]
+shape = SubResource("RectangleShape2D_vs4e2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=113377586]
+modulate = Color(0, 0, 0, 1)
+z_index = 20
+mesh = SubResource("QuadMesh_q6jj4")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=2049922949]
+position = Vector2(51.333336, -17.666666)
