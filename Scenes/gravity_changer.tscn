@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://xubysr1hppuv"]
+
+[ext_resource type="Script" uid="uid://dx3730se3mvxt" path="res://Scripts/GravityChanger.cs" id="1_tf5u7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ij0am"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_f06ay"]
+size = Vector2(20, 20)
+
+[node name="GravityChanger" type="Area2D" unique_id=446746866]
+script = ExtResource("1_tf5u7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=679484536]
+scale = Vector2(10, 10)
+shape = SubResource("RectangleShape2D_ij0am")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=838542731]
+modulate = Color(1, 0.41960785, 0.41960785, 1)
+z_index = -100
+scale = Vector2(10, 10)
+mesh = SubResource("QuadMesh_f06ay")

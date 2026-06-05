@@ -767,7 +767,6 @@ shape = SubResource("RectangleShape2D_2jr5n")
 process_material = SubResource("ParticleProcessMaterial_pml6m")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=1038193649]
-visible = false
 modulate = Color(0.78235406, 0.78235406, 0.78235406, 1)
 z_index = 19
 position = Vector2(1918, 194)

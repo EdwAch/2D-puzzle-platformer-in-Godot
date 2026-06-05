@@ -27,7 +27,7 @@ public partial class PlayerController : CharacterBody2D {
 	public override void _PhysicsProcess(double delta) {
 		Vector2 currentVelocity = Velocity;
 		
-		if (!IsGrounded()) {
+		if (!IsGrounded() || _gravity < 0) {
 			currentVelocity.Y += _gravity * (float)delta;	
 		} else if (currentVelocity.Y > 0) {
 			currentVelocity.Y = 0;
@@ -71,7 +71,7 @@ public partial class PlayerController : CharacterBody2D {
 				currentVelocity.Y = _jumpSpeed;
 				_doubleJump = !_doubleJump;
 			}
-			if (Input.IsActionJustReleased("Jump") && currentVelocity.Y < 0) {
+			if (Input.IsActionJustReleased("Jump") && _jumpSpeed < 0 && currentVelocity.Y < 0) {
 					currentVelocity.Y = currentVelocity.Y * 0.5f;
 			}
 			if (!IsGrounded() && Input.IsActionJustPressed("Jump") && _doubleJump) {
@@ -127,6 +127,12 @@ public partial class PlayerController : CharacterBody2D {
 	public void MovePlayerToLocation(Marker2D location) {
 		GlobalPosition = location.GlobalPosition;
 	}
+
+	public void InvertGravity() {
+		_gravity = -_gravity;
+		_jumpSpeed = -_jumpSpeed;
+	}
+	
 	public void HidePlayer() {
 		this.Hide();
 	}

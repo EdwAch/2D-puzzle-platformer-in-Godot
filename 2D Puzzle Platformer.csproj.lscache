@@ -62,6 +62,7 @@ Scripts/
  DisappearBackground.cs
  EndDoor.cs
  GameManager.cs
+ GravityChanger.cs
  Ice.cs
  Level.cs
  LevelContainer.cs
