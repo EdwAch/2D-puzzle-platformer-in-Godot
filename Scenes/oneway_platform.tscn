@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cptw5h4x04tmi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_absw3"]
+size = Vector2(20, 4)
+
+[sub_resource type="QuadMesh" id="QuadMesh_padch"]
+size = Vector2(20, 18)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ej5lj"]
+load_path = "res://.godot/imported/onewayplatform.png-8cbf1ed3bfe7987402e0e3bab8f11e72.ctex"
+
+[node name="OnewayPlatform" type="StaticBody2D" unique_id=512535990]
+scale = Vector2(3, 1.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=857847329]
+shape = SubResource("RectangleShape2D_absw3")
+one_way_collision = true
+one_way_collision_margin = 5.0
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=383972627]
+rotation = 3.1415927
+mesh = SubResource("QuadMesh_padch")
+texture = SubResource("CompressedTexture2D_ej5lj")

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b6q0cbjlegyn2"]
 
 [ext_resource type="PackedScene" uid="uid://c0nfsi4od1ogt" path="res://Scenes/safety_net.tscn" id="1_cb8d3"]
+[ext_resource type="Script" uid="uid://c6f8kuperq5xi" path="res://Scripts/Level.cs" id="1_ej5lj"]
 [ext_resource type="PackedScene" uid="uid://xubysr1hppuv" path="res://Scenes/gravity_changer.tscn" id="2_5lru4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5lru4"]
@@ -9,7 +10,14 @@ size = Vector2(20, 313.33334)
 [sub_resource type="QuadMesh" id="QuadMesh_ej5lj"]
 size = Vector2(20, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ej5lj"]
+size = Vector2(20, 313.33334)
+
+[sub_resource type="QuadMesh" id="QuadMesh_absw3"]
+size = Vector2(20, 20)
+
 [node name="Level3" type="Node2D" unique_id=276440430]
+script = ExtResource("1_ej5lj")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1151235071]
 position = Vector2(175, 153)
@@ -33,12 +41,12 @@ scale = Vector2(50, 3)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=1742965627]
 position = Vector2(0, 73.333336)
 scale = Vector2(10, 0.5)
-shape = SubResource("RectangleShape2D_5lru4")
+shape = SubResource("RectangleShape2D_ej5lj")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D2" unique_id=1130454250]
 position = Vector2(0, 73.333336)
 scale = Vector2(10, 7.8333335)
-mesh = SubResource("QuadMesh_ej5lj")
+mesh = SubResource("QuadMesh_absw3")
 
 [node name="Spawnpoint" type="Marker2D" parent="." unique_id=369950115]
 position = Vector2(114, 120)
