@@ -58,6 +58,7 @@ TemporaryDependencyNodeTargetIdentifier=net8.0
 Scripts/
  ButtonController.cs
  CoinPickup.cs
+ CrumblingPlatform.cs
  DeadlyObject.cs
  DisappearBackground.cs
  EndDoor.cs

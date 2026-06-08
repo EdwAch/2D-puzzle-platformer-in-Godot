@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://sokoe3urch7j"]
+
+[ext_resource type="Script" uid="uid://pihylrf7bq83" path="res://Scripts/CrumblingPlatform.cs" id="1_hut0a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_padch"]
+size = Vector2(40, 6)
+
+[sub_resource type="QuadMesh" id="QuadMesh_uwxw1"]
+size = Vector2(20, 20)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ay5qi"]
+load_path = "res://.godot/imported/crumblingplatform.png-1bdd0cf48b338f4fc16baf6b0ec5f2d9.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fa81k"]
+size = Vector2(40, 3)
+
+[node name="CrumblingPlatform" type="StaticBody2D" unique_id=704336917]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1600271019]
+shape = SubResource("RectangleShape2D_padch")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=1150703436]
+scale = Vector2(2, 1.2)
+mesh = SubResource("QuadMesh_uwxw1")
+texture = SubResource("CompressedTexture2D_ay5qi")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1685527649 node_paths=PackedStringArray("_timer", "_platformMeshInstance2D", "_platformCollisionShape2D")]
+script = ExtResource("1_hut0a")
+_timer = NodePath("Timer")
+_platformMeshInstance2D = NodePath("../MeshInstance2D")
+_platformCollisionShape2D = NodePath("../CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1071089295]
+position = Vector2(0, -3.5)
+shape = SubResource("RectangleShape2D_fa81k")
+
+[node name="Timer" type="Timer" parent="Area2D" unique_id=467719701]
+wait_time = 5.0
+one_shot = true
