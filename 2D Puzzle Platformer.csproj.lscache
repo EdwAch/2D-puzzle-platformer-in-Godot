@@ -73,6 +73,7 @@ Scripts/
  Teleporter.cs
  UI.cs
  VerticalWindArea.cs
+ WallOfDoom.cs
  WindArea.cs
 
 [metadataReferences]

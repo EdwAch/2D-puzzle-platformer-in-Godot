@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://cpds45qkavom4"]
+
+[ext_resource type="Script" uid="uid://cii4rg4tekq4t" path="res://Scripts/WallOfDoom.cs" id="1_0lf4n"]
+[ext_resource type="PackedScene" uid="uid://b1us1u1nbvisq" path="res://Scenes/deadly_ground.tscn" id="2_kus3a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_padch"]
+size = Vector2(5, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uwxw1"]
+size = Vector2(10, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ay5qi"]
+size = Vector3(10, 1, 1)
+
+[node name="WallOfDoom" type="Area2D" unique_id=1920996098]
+script = ExtResource("1_0lf4n")
+_wallSpeed = 10
+_horizontal = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2029295756]
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_padch")
+
+[node name="DeadlyGround" parent="." unique_id=1019992511 instance=ExtResource("2_kus3a")]
+rotation = 1.5707964
+scale = Vector2(20, 20)
+
+[node name="CollisionShape2D" parent="DeadlyGround" index="0" unique_id=1588458503]
+shape = SubResource("RectangleShape2D_uwxw1")
+
+[node name="MeshInstance2D" parent="DeadlyGround" index="1" unique_id=437384590]
+mesh = SubResource("BoxMesh_ay5qi")
+
+[editable path="DeadlyGround"]
