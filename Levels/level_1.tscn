@@ -16,6 +16,24 @@ size = Vector2(20, 313.33334)
 [sub_resource type="QuadMesh" id="QuadMesh_10xm0"]
 size = Vector2(20, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xoyoh"]
+size = Vector2(32.174805, 313.33334)
+
+[sub_resource type="QuadMesh" id="QuadMesh_f4pg2"]
+size = Vector2(20, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_62b6n"]
+size = Vector2(30.246338, 313.33334)
+
+[sub_resource type="QuadMesh" id="QuadMesh_rs4xw"]
+size = Vector2(20, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lk57d"]
+size = Vector2(31.210693, 313.33334)
+
+[sub_resource type="QuadMesh" id="QuadMesh_2hkqn"]
+size = Vector2(20, 20)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kmmve"]
 size = Vector2(1, 20)
 
@@ -62,14 +80,14 @@ rotation = -3.1415925
 scale = Vector2(0.10372162, -0.04476732)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ground/StaticBody2D2" unique_id=694888067]
-position = Vector2(0, 73.333336)
+position = Vector2(-60.873047, 73.333374)
 scale = Vector2(10, 0.5)
-shape = SubResource("RectangleShape2D_0vkbl")
+shape = SubResource("RectangleShape2D_xoyoh")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="ground/StaticBody2D2" unique_id=1025317476]
-position = Vector2(0, 73.333336)
-scale = Vector2(10, 7.8333335)
-mesh = SubResource("QuadMesh_10xm0")
+position = Vector2(-63.47168, 73.333336)
+scale = Vector2(16.347168, 7.8333335)
+mesh = SubResource("QuadMesh_f4pg2")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="ground" unique_id=887334232]
 position = Vector2(2263, 32)
@@ -77,14 +95,14 @@ rotation = -3.1415925
 scale = Vector2(0.10372162, -0.04476732)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ground/StaticBody2D3" unique_id=1143102077]
-position = Vector2(0, 73.333336)
+position = Vector2(51.23047, 73.33331)
 scale = Vector2(10, 0.5)
-shape = SubResource("RectangleShape2D_0vkbl")
+shape = SubResource("RectangleShape2D_62b6n")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="ground/StaticBody2D3" unique_id=834101446]
-position = Vector2(0, 73.333336)
-scale = Vector2(10, 7.8333335)
-mesh = SubResource("QuadMesh_10xm0")
+position = Vector2(51.280518, 73.333336)
+scale = Vector2(15.128052, 7.8333335)
+mesh = SubResource("QuadMesh_rs4xw")
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="ground" unique_id=815541218]
 position = Vector2(2313, -28)
@@ -92,14 +110,14 @@ rotation = -3.1415925
 scale = Vector2(0.10372162, -0.04476732)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ground/StaticBody2D4" unique_id=173395169]
-position = Vector2(0, 73.333336)
+position = Vector2(-56.052734, 73.33331)
 scale = Vector2(10, 0.5)
-shape = SubResource("RectangleShape2D_0vkbl")
+shape = SubResource("RectangleShape2D_lk57d")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="ground/StaticBody2D4" unique_id=1175642662]
-position = Vector2(0, 73.333336)
-scale = Vector2(10, 7.8333335)
-mesh = SubResource("QuadMesh_10xm0")
+position = Vector2(-55.706787, 73.333336)
+scale = Vector2(15.570679, 7.8333335)
+mesh = SubResource("QuadMesh_2hkqn")
 
 [node name="StaticBody2D5" type="StaticBody2D" parent="ground" unique_id=825269200]
 position = Vector2(2468, -54)
