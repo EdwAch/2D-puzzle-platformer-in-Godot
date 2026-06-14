@@ -745,9 +745,11 @@ scale = Vector2(1.0018575, 1)
 mesh = SubResource("BoxMesh_lkaga")
 
 [node name="WindSpot" parent="." unique_id=1512867740 instance=ExtResource("8_pml6m")]
-position = Vector2(1147, -62)
+position = Vector2(1198, -62)
 rotation = 3.1415927
+scale = Vector2(1.5, 1)
 _windForce = 1200
+_maxSpeedFromWind = 20.0
 
 [node name="CollisionShape2D" parent="WindSpot" index="0" unique_id=1446325693]
 shape = SubResource("RectangleShape2D_3f6ja")
@@ -758,6 +760,7 @@ process_material = SubResource("ParticleProcessMaterial_pml6m")
 [node name="WindSpot2" parent="." unique_id=138885782 instance=ExtResource("8_pml6m")]
 position = Vector2(3360, 167)
 _windForce = -1200
+_maxSpeedFromWind = 20.0
 
 [node name="CollisionShape2D" parent="WindSpot2" index="0" unique_id=1446325693]
 position = Vector2(-12, 0)

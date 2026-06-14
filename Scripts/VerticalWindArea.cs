@@ -12,14 +12,14 @@ public partial class VerticalWindArea : Area2D {
 	private void OnBodyEntered(Node2D body) {
 		if (body is PlayerController playerController) {
 			playerController.ChangeWindDirection();
-			playerController.ChangeWindForce(_windForce);
+			playerController.ChangeWindForce(_windForce, 0);
 		}
 	}
 
 	private void OnBodyExited(Node2D body) {
 		if (body is PlayerController playerController) {
 			playerController.ChangeWindDirection();
-			playerController.ChangeWindForce(0);
+			playerController.ChangeWindForce(0, 0);
 		}
 	}
 }

@@ -16,6 +16,8 @@ public partial class PlayerController : CharacterBody2D {
 	private float _acceleration = 1500f;
 	private float _windForce = 0f;
 	// 600 wind force adds +10 to velocity
+	private float _maxSpeedFromWind = 0f;
+	// 0 means on ground/no limit to speed change from wind, vertical not affected
 	private float _currentWindVelocityX = 0f;
 	private float _currentWindVelocityY = 0f;
 	private bool _verticalWind = false;
@@ -51,12 +53,8 @@ public partial class PlayerController : CharacterBody2D {
 				currentVelocity.X = Mathf.MoveToward(Velocity.X, 0, 10000f);
 			} Uncomment this if dont want movement when no movement key is pressed and midair
 			*/
-			if (_windForce != 0 && !_verticalWind) {
-				if (IsGrounded() && _frictionModifier == 1) {
-					_currentWindVelocityX = _windForce;
-				} else {
-					_currentWindVelocityX = 0;
-				}
+			if (_windForce != 0 && !_verticalWind && _frictionModifier == 1) {
+				_currentWindVelocityX = _windForce;
 			} else {
 				_currentWindVelocityX = 0;
 			} 
@@ -83,10 +81,20 @@ public partial class PlayerController : CharacterBody2D {
 			_currentWindVelocityX = 0;
 		}
 		
-		currentVelocity.X += _currentWindVelocityX * (float)delta;
+		if (_maxSpeedFromWind != 0f && !IsGrounded() && Mathf.Abs(_currentWindVelocityX) > _maxSpeedFromWind) {
+			if (leftDirection || rightDirection) {
+				currentVelocity.X += Mathf.Sign(_currentWindVelocityX) * _maxSpeedFromWind;
+			} else {
+				_currentWindVelocityX = Mathf.Sign(_currentWindVelocityX) * _maxSpeedFromWind;
+				currentVelocity.X += _currentWindVelocityX * (float)delta;
+			}
+		} else {
+			currentVelocity.X += _currentWindVelocityX * (float)delta;
+		}
 		currentVelocity.Y += _currentWindVelocityY * (float)delta;
 
 		Velocity = currentVelocity;
+		GD.Print(Velocity);
 		MoveAndSlide();
 	}
 
@@ -111,8 +119,9 @@ public partial class PlayerController : CharacterBody2D {
 		}
 	}
 
-	public void ChangeWindForce(int value) {
+	public void ChangeWindForce(int value, float value2) {
 		_windForce = value;
+		_maxSpeedFromWind = value2;
 	}
 	
 	public void ChangeWindDirection() {
