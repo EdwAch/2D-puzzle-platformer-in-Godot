@@ -94,7 +94,6 @@ public partial class PlayerController : CharacterBody2D {
 		currentVelocity.Y += _currentWindVelocityY * (float)delta;
 
 		Velocity = currentVelocity;
-		GD.Print(Velocity);
 		MoveAndSlide();
 	}
 

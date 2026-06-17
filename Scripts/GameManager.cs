@@ -16,15 +16,18 @@ public partial class GameManager : Node2D {
 	}
 
 	public void GoToNextLevel() {
-		foreach (PackedScene level in levelList) {
-			int index = Array.IndexOf(levelList, level);
-			if (index > _levelNumber) {
-				LevelManager.Instance.CallDeferred(nameof(LevelManager.LoadLevel), level);
-				_levelNumber++;
-			}
+		if (_levelNumber + 1 >= levelList.Length) {
+			_levelNumber = 0;
+			LevelManager.Instance.CallDeferred(nameof(LevelManager.LoadLevel), levelList[_levelNumber]);
+			LevelStarted();
+			_score = 0;
+			//Delete this if but leave the else when all levels are actually done
+		} else {
+			_levelNumber++;
+			LevelManager.Instance.CallDeferred(nameof(LevelManager.LoadLevel), levelList[_levelNumber]);
+			LevelStarted();
+			_score = 0;
 		}
-		LevelStarted();
-		_score = 0;
 	}
 
 	public void ReloadLevel() {

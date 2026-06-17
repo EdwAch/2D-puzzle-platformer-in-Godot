@@ -105,7 +105,7 @@ scale = Vector2(15.128052, 7.8333335)
 mesh = SubResource("QuadMesh_rs4xw")
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="ground" unique_id=815541218]
-position = Vector2(2313, -28)
+position = Vector2(2319, -23.999998)
 rotation = -3.1415925
 scale = Vector2(0.10372162, -0.04476732)
 
