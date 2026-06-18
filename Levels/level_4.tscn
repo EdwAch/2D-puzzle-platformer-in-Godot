@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://ka3iglh3pfh4"]
+
+[ext_resource type="PackedScene" uid="uid://c0nfsi4od1ogt" path="res://Scenes/safety_net.tscn" id="1_ftfcu"]
+[ext_resource type="Script" uid="uid://c6f8kuperq5xi" path="res://Scripts/Level.cs" id="1_nsqb1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e78ah"]
+size = Vector2(11.3880005, 313.33334)
+
+[sub_resource type="QuadMesh" id="QuadMesh_nsqb1"]
+size = Vector2(20, 20)
+
+[node name="Level4" type="Node2D" unique_id=643751682]
+script = ExtResource("1_nsqb1")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1004521757]
+position = Vector2(0, 318)
+scale = Vector2(50, 3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1077084665]
+scale = Vector2(10, 0.5)
+shape = SubResource("RectangleShape2D_e78ah")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D" unique_id=1522951841]
+scale = Vector2(5.6940002, 7.8333335)
+mesh = SubResource("QuadMesh_nsqb1")
+
+[node name="SafetyNet" parent="." unique_id=693047989 instance=ExtResource("1_ftfcu")]
+position = Vector2(0, 8)
+
+[node name="Spawnpoint" type="Marker2D" parent="." unique_id=2055500263]
+position = Vector2(90, 68)

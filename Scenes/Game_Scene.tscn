@@ -1,10 +1,8 @@
 [gd_scene format=3 uid="uid://dyt525homcrip"]
 
 [ext_resource type="Script" uid="uid://bb8yxwg3yfq77" path="res://Scripts/GameManager.cs" id="1_x2gyv"]
-[ext_resource type="PackedScene" uid="uid://cirgab7pnmul" path="res://Levels/level_1.tscn" id="2_1ef35"]
-[ext_resource type="PackedScene" uid="uid://b6q0cbjlegyn2" path="res://Levels/level_3.tscn" id="2_q4qju"]
+[ext_resource type="PackedScene" uid="uid://ka3iglh3pfh4" path="res://Levels/level_4.tscn" id="2_q4qju"]
 [ext_resource type="Script" uid="uid://dsss21wn8o3k7" path="res://Scripts/PlayerController.cs" id="3_i5u4n"]
-[ext_resource type="PackedScene" uid="uid://ltjo05to0qme" path="res://Levels/level_2.tscn" id="3_ljh26"]
 [ext_resource type="Script" uid="uid://cif7jwawbqdws" path="res://Scripts/LevelContainer.cs" id="4_1ef35"]
 [ext_resource type="PackedScene" uid="uid://b4685icbo4v7o" path="res://Scenes/ingame_ui.tscn" id="5_q4qju"]
 
@@ -19,7 +17,7 @@ height = 20.0
 [node name="World" type="Node2D" unique_id=1179167687]
 scale = Vector2(2, 2)
 script = ExtResource("1_x2gyv")
-levelList = Array[PackedScene]([ExtResource("2_1ef35"), ExtResource("3_ljh26"), ExtResource("2_q4qju")])
+levelList = Array[PackedScene]([ExtResource("2_q4qju")])
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=741648026 node_paths=PackedStringArray("_groundChecker")]
 z_index = 10
