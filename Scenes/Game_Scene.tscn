@@ -19,13 +19,14 @@ scale = Vector2(2, 2)
 script = ExtResource("1_x2gyv")
 levelList = Array[PackedScene]([ExtResource("2_q4qju")])
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=741648026 node_paths=PackedStringArray("_groundChecker")]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=741648026 node_paths=PackedStringArray("_groundChecker", "_playerCamera")]
 z_index = 10
 rotation = -1.5707964
 scale = Vector2(1.5, 0.75)
 script = ExtResource("3_i5u4n")
 _jumpSpeed = -250.0
 _groundChecker = NodePath("ShapeCast2D")
+_playerCamera = NodePath("Camera2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=485363316]
 shape = SubResource("CapsuleShape2D_0vkbl")

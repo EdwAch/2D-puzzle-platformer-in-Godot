@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dcacedmoetfj3"]
+
+[ext_resource type="Script" uid="uid://bpeghi7jhom0w" path="res://Scripts/SideScroller.cs" id="1_nev8x"]
+[ext_resource type="Script" uid="uid://b0ii5ktt1eh3u" path="res://Scripts/SideScrollerCamera.cs" id="2_grra8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3egk7"]
+size = Vector2(240, 110)
+
+[node name="SideScroller" type="Area2D" unique_id=1693661058 node_paths=PackedStringArray("_camera")]
+script = ExtResource("1_nev8x")
+_camera = NodePath("Camera2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1417837179]
+shape = SubResource("RectangleShape2D_3egk7")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1758238500 node_paths=PackedStringArray("_cameraEndpoint")]
+position = Vector2(-120, 0)
+script = ExtResource("2_grra8")
+_cameraEndpoint = NodePath("../CameraMarker")
+
+[node name="CameraMarker" type="Marker2D" parent="." unique_id=1557578620]
+position = Vector2(120, 0)

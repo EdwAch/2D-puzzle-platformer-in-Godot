@@ -8,6 +8,7 @@ public partial class PlayerController : CharacterBody2D {
 	[Export] private float _gravity = 400f;
 	[Export] private float _jumpSpeed = -200f;
 	[Export] private ShapeCast2D _groundChecker;
+	[Export] private Camera2D _playerCamera;
 	private bool _canMove = true;
 	private bool _doubleJump = false;
 	private float _friction = 1200f;
@@ -139,6 +140,14 @@ public partial class PlayerController : CharacterBody2D {
 	public void InvertGravity() {
 		_gravity = -_gravity;
 		_jumpSpeed = -_jumpSpeed;
+	}
+
+	public void ToggleCamera() {
+		if (_playerCamera.Enabled) {
+			_playerCamera.Enabled = false;
+		} else {
+			_playerCamera.Enabled = true;
+		}
 	}
 	
 	public void HidePlayer() {
