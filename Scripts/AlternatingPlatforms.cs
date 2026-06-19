@@ -8,11 +8,18 @@ public partial class AlternatingPlatforms : Node2D {
 	[Export] private MeshInstance2D[] _purpleMeshInstance2DList;
 	[Export] private CollisionShape2D[] _blueCollisionShape2DList;
 	[Export] private CollisionShape2D[] _purpleCollisionShape2DList;
+	private float _timerTime;
+	private int _loops;
 	private Tween _tween;
 	private bool _blueHidden = false;
 	public override void _Ready() {
 		_timer.Timeout += OnTimerTimeout;
-		_tween = CreateTween().SetLoops(2);
+		_timerTime = (float)_timer.WaitTime;
+		if (_timerTime%2 != 0) {
+			_timerTime++;
+		}
+		_loops = (int)_timerTime/2;
+		_tween = CreateTween().SetLoops(_loops);
 		foreach (MeshInstance2D meshInstance2D in _blueMeshInstance2DList) {
 			_tween.TweenProperty(meshInstance2D, "modulate:a", 0.3, 1);
 			_tween.TweenProperty(meshInstance2D, "modulate:a", 1, 1);
@@ -26,7 +33,7 @@ public partial class AlternatingPlatforms : Node2D {
 	}
 
 	private void OnTimerTimeout() {
-		_tween = CreateTween().SetLoops(2);
+		_tween = CreateTween().SetLoops(_loops);
 		if (_blueHidden) {
 			foreach (MeshInstance2D meshInstance2D in _blueMeshInstance2DList) {
 				meshInstance2D.Show();
