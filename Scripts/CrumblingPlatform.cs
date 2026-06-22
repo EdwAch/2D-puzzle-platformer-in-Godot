@@ -32,13 +32,11 @@ public partial class CrumblingPlatform : Area2D {
 			_platformMeshInstance2D.Hide();
 			_platformCollisionShape2D.CallDeferred("set_disabled", true);
 			_hidden = true;
-			_timer.Stop();
 			_timer.Start();
 		} else {
 			_platformMeshInstance2D.Show();
 			_platformCollisionShape2D.CallDeferred("set_disabled", false);
 			_hidden = false;
-			_timer.Stop();
 		}
 	}
 }

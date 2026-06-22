@@ -22,6 +22,7 @@ public partial class PlayerController : CharacterBody2D {
 	private float _currentWindVelocityX = 0f;
 	private float _currentWindVelocityY = 0f;
 	private bool _verticalWind = false;
+	private bool _wasGrounded;
 
     public override void _Ready() {
         LevelManager.Instance.RegisterPlayer(this);
@@ -29,7 +30,8 @@ public partial class PlayerController : CharacterBody2D {
     }
 	public override void _PhysicsProcess(double delta) {
 		Vector2 currentVelocity = Velocity;
-		
+		_wasGrounded = IsGrounded();
+
 		if (!IsGrounded() || _gravity < 0) {
 			currentVelocity.Y += _gravity * (float)delta;	
 		} else if (currentVelocity.Y > 0) {
@@ -101,6 +103,10 @@ public partial class PlayerController : CharacterBody2D {
 	private bool IsGrounded() {
 		_groundChecker.ForceShapecastUpdate();
 		return _groundChecker.IsColliding();
+	}
+
+	public bool WasGrounded() {
+		return _wasGrounded;
 	}
 
 	public void ChangeFrictionModifier() {

@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://6rsxjvc0x5v"]
+
+[ext_resource type="Script" uid="uid://wxhej3yfh60d" path="res://Scripts/JumpingAlternatingPlatforms.cs" id="1_t48ug"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dqkp2"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_jrbl5"]
+size = Vector2(20, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ql8w"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_xftji"]
+size = Vector2(20, 20)
+
+[node name="JumpingAlternatingPlatforms" type="Node2D" unique_id=1339691229 node_paths=PackedStringArray("_timer", "_orangeMeshInstance2DList", "_yellowMeshInstance2DList", "_orangeCollisionShape2DList", "_yellowCollisionShape2DList")]
+script = ExtResource("1_t48ug")
+_timer = NodePath("Timer")
+_orangeMeshInstance2DList = [NodePath("OrangePlatform/MeshInstance2D")]
+_yellowMeshInstance2DList = [NodePath("YellowPlatform/MeshInstance2D")]
+_orangeCollisionShape2DList = [NodePath("OrangePlatform/CollisionShape2D")]
+_yellowCollisionShape2DList = [NodePath("YellowPlatform/CollisionShape2D")]
+
+[node name="OrangePlatform" type="StaticBody2D" parent="." unique_id=1696143198]
+position = Vector2(-50, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OrangePlatform" unique_id=10712652]
+scale = Vector2(1, 0.5)
+shape = SubResource("RectangleShape2D_dqkp2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="OrangePlatform" unique_id=1915059401]
+modulate = Color(0.9098039, 0.47058824, 0.1254902, 1)
+scale = Vector2(1, 0.5)
+mesh = SubResource("QuadMesh_jrbl5")
+
+[node name="YellowPlatform" type="StaticBody2D" parent="." unique_id=1921134071]
+position = Vector2(50, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YellowPlatform" unique_id=1703510469]
+scale = Vector2(1, 0.5)
+shape = SubResource("RectangleShape2D_7ql8w")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="YellowPlatform" unique_id=1692338485]
+modulate = Color(0.9411765, 0.8156863, 0.1254902, 1)
+scale = Vector2(1, 0.5)
+mesh = SubResource("QuadMesh_xftji")
+
+[node name="Timer" type="Timer" parent="." unique_id=1751643505]
+wait_time = 0.5
+one_shot = true
