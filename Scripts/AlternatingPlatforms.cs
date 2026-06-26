@@ -16,7 +16,7 @@ public partial class AlternatingPlatforms : Node2D {
 		
 		StartBlink(_greenMeshInstance2DList);
 		foreach (MeshInstance2D mesh in _purpleMeshInstance2DList) mesh.Hide();
-		foreach (CollisionShape2D col in _purpleCollisionShape2DList) col.SetDeferred("set_disabled", true);
+		foreach (CollisionShape2D col in _purpleCollisionShape2DList) col.CallDeferred("set_disabled", true);
 	}
 
 	private void StartBlink(MeshInstance2D[] list) {
