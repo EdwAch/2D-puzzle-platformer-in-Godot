@@ -4,68 +4,61 @@ using System;
 public partial class AlternatingPlatforms : Node2D {
 	
 	[Export] private Timer _timer;
-	[Export] private MeshInstance2D[] _blueMeshInstance2DList;
+	[Export] private MeshInstance2D[] _greenMeshInstance2DList;
 	[Export] private MeshInstance2D[] _purpleMeshInstance2DList;
-	[Export] private CollisionShape2D[] _blueCollisionShape2DList;
+	[Export] private CollisionShape2D[] _greenCollisionShape2DList;
 	[Export] private CollisionShape2D[] _purpleCollisionShape2DList;
 	private float _timerTime;
 	private int _loops;
-	private Tween _tween;
-	private bool _blueHidden = false;
+	private bool _greenHidden = false;
 	public override void _Ready() {
 		_timer.Timeout += OnTimerTimeout;
-		_timerTime = (float)_timer.WaitTime;
-		if (_timerTime%2 != 0) {
-			_timerTime++;
+		
+		StartBlink(_greenMeshInstance2DList);
+		foreach (MeshInstance2D mesh in _purpleMeshInstance2DList) mesh.Hide();
+		foreach (CollisionShape2D col in _purpleCollisionShape2DList) col.SetDeferred("set_disabled", true);
+	}
+
+	private void StartBlink(MeshInstance2D[] list) {
+		Tween tween = CreateTween().SetLoops();
+		tween.SetParallel(true);
+		foreach (MeshInstance2D mesh in list) {
+			tween.TweenProperty(mesh, "modulate:a", 0.3f, 1);
 		}
-		_loops = (int)_timerTime/2;
-		_tween = CreateTween().SetLoops(_loops);
-		foreach (MeshInstance2D meshInstance2D in _blueMeshInstance2DList) {
-			_tween.TweenProperty(meshInstance2D, "modulate:a", 0.3, 1);
-			_tween.TweenProperty(meshInstance2D, "modulate:a", 1, 1);
+		tween.SetParallel(false);
+		tween.TweenInterval(0);
+		tween.SetParallel(true);
+		foreach (MeshInstance2D mesh in list) {
+			tween.TweenProperty(mesh, "modulate:a", 1f, 1);
 		}
-		foreach (MeshInstance2D meshInstance2D in _purpleMeshInstance2DList) {
-			meshInstance2D.Hide();
+		tween.SetParallel(false);
+		tween.TweenInterval(0);
+	}
+
+	private void SetGroupVisible(MeshInstance2D[] meshes, CollisionShape2D[] cols, bool visible) {
+		foreach (MeshInstance2D mesh in meshes) {
+			if (visible) {
+				mesh.Show();
+			} else {
+				mesh.Hide();
+			}
 		}
-		foreach (CollisionShape2D collisionShape2D in _purpleCollisionShape2DList) {
-			collisionShape2D.CallDeferred("set_disabled", true);
+		foreach (CollisionShape2D col in cols) {
+			col.CallDeferred("set_disabled", !visible);
 		}
 	}
 
 	private void OnTimerTimeout() {
-		_tween = CreateTween().SetLoops(_loops);
-		if (_blueHidden) {
-			foreach (MeshInstance2D meshInstance2D in _blueMeshInstance2DList) {
-				meshInstance2D.Show();
-				_tween.TweenProperty(meshInstance2D, "modulate:a", 0.3, 1);
-				_tween.TweenProperty(meshInstance2D, "modulate:a", 1, 1);
-			}
-			foreach (CollisionShape2D collisionShape2D in _blueCollisionShape2DList) {
-				collisionShape2D.CallDeferred("set_disabled", false);
-			}
-			foreach (MeshInstance2D meshInstance2D in _purpleMeshInstance2DList) {
-				meshInstance2D.Hide();
-			}
-			foreach (CollisionShape2D collisionShape2D in _purpleCollisionShape2DList) {
-				collisionShape2D.CallDeferred("set_disabled", true);
-			}
-			_blueHidden = false;
+		if (_greenHidden) {
+			SetGroupVisible(_greenMeshInstance2DList, _greenCollisionShape2DList, true);
+			SetGroupVisible(_purpleMeshInstance2DList, _purpleCollisionShape2DList, false);
+			StartBlink(_greenMeshInstance2DList);
+			_greenHidden = false;
 		} else {
-			foreach (MeshInstance2D meshInstance2D in _purpleMeshInstance2DList) {
-				meshInstance2D.Show();
-				_tween.TweenProperty(meshInstance2D, "modulate:a", 0.3, 1);
-				_tween.TweenProperty(meshInstance2D, "modulate:a", 1, 1);
-			}
-			foreach (CollisionShape2D collisionShape2D in _purpleCollisionShape2DList) {
-				collisionShape2D.CallDeferred("set_disabled", false);
-			}
-			foreach (MeshInstance2D meshInstance2D in _blueMeshInstance2DList) {
-				meshInstance2D.Hide();
-			}
-			foreach (CollisionShape2D collisionShape2D in _blueCollisionShape2DList) {
-				collisionShape2D.CallDeferred("set_disabled", true);
-			}
-			_blueHidden = true;
+			SetGroupVisible(_purpleMeshInstance2DList, _purpleCollisionShape2DList, true);
+			SetGroupVisible(_greenMeshInstance2DList, _greenCollisionShape2DList, false);
+			StartBlink(_purpleMeshInstance2DList);
+			_greenHidden = true;
 		}
 	}
 }

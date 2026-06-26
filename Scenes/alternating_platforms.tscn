@@ -12,22 +12,22 @@ size = Vector2(20, 20)
 [sub_resource type="QuadMesh" id="QuadMesh_4e1pe"]
 size = Vector2(20, 20)
 
-[node name="AlternatingPlatforms" type="Node2D" unique_id=1594125858 node_paths=PackedStringArray("_timer", "_blueMeshInstance2DList", "_purpleMeshInstance2DList", "_blueCollisionShape2DList", "_purpleCollisionShape2DList")]
+[node name="AlternatingPlatforms" type="Node2D" unique_id=1594125858 node_paths=PackedStringArray("_timer", "_greenMeshInstance2DList", "_purpleMeshInstance2DList", "_greenCollisionShape2DList", "_purpleCollisionShape2DList")]
 script = ExtResource("1_ol88y")
 _timer = NodePath("Timer")
-_blueMeshInstance2DList = [NodePath("BluePlatform/MeshInstance2D")]
+_greenMeshInstance2DList = [NodePath("GreenPlatform/MeshInstance2D")]
 _purpleMeshInstance2DList = [NodePath("PurplePlatform/MeshInstance2D")]
-_blueCollisionShape2DList = [NodePath("BluePlatform/CollisionShape2D")]
+_greenCollisionShape2DList = [NodePath("GreenPlatform/CollisionShape2D")]
 _purpleCollisionShape2DList = [NodePath("PurplePlatform/CollisionShape2D")]
 
-[node name="BluePlatform" type="StaticBody2D" parent="." unique_id=1055043349]
+[node name="GreenPlatform" type="StaticBody2D" parent="." unique_id=1055043349]
 position = Vector2(-50, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BluePlatform" unique_id=2124551007]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GreenPlatform" unique_id=2124551007]
 scale = Vector2(1, 0.5)
 shape = SubResource("RectangleShape2D_ymgs5")
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="BluePlatform" unique_id=605061579]
+[node name="MeshInstance2D" type="MeshInstance2D" parent="GreenPlatform" unique_id=605061579]
 modulate = Color(0, 1, 0.07058824, 1)
 scale = Vector2(1, 0.5)
 mesh = SubResource("QuadMesh_imn6y")

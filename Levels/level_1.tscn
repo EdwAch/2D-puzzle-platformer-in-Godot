@@ -189,7 +189,6 @@ position = Vector2(712, 52)
 position = Vector2(2224, -176)
 
 [node name="SafetyNet" parent="." unique_id=693047989 instance=ExtResource("5_rfktq")]
-visible = false
 position = Vector2(0, 8)
 
 [node name="TripleSpikes" parent="." unique_id=1494210746 instance=ExtResource("6_rfktq")]
