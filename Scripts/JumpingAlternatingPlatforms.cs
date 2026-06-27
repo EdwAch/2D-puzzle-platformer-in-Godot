@@ -24,20 +24,17 @@ public partial class JumpingAlternatingPlatforms : Node2D {
 
     public override void _PhysicsProcess(double delta) {
         if (Input.IsActionJustPressed("Jump") && PlayerController.Instance.WasGrounded()) {
-			GD.Print("Jumped x1");
 			if (_orangeHidden) {
 				_timer.Start();
 				foreach (CollisionShape2D collision in _orangeCollisionShape2DList) {
 					collision.CallDeferred("set_disabled", false);
 				}
-				GD.Print("Jumped x2");
 				ChangePlatformVisibility();
 			} else {
 				_timer.Start();
 				foreach (CollisionShape2D collision in _yellowCollisionShape2DList) {
 					collision.CallDeferred("set_disabled", false);
 				}
-				GD.Print("Jumped x3");
 				ChangePlatformVisibility();
 			}
 		}
