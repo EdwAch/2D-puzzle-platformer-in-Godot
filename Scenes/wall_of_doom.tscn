@@ -12,10 +12,12 @@ size = Vector2(10, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_ay5qi"]
 size = Vector3(10, 1, 1)
 
-[node name="WallOfDoom" type="Area2D" unique_id=1920996098]
+[node name="WallOfDoom" type="Area2D" unique_id=1920996098 node_paths=PackedStringArray("_mesh", "_col")]
 script = ExtResource("1_0lf4n")
 _wallSpeed = 10
 _horizontal = true
+_mesh = NodePath("DeadlyGround/MeshInstance2D")
+_col = NodePath("DeadlyGround/CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2029295756]
 scale = Vector2(2, 2)

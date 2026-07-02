@@ -14,11 +14,25 @@
 [ext_resource type="PackedScene" uid="uid://b1us1u1nbvisq" path="res://Scenes/deadly_ground.tscn" id="12_x4mg1"]
 [ext_resource type="PackedScene" uid="uid://ddna045rfwn3k" path="res://Scenes/teleporter.tscn" id="13_x4mg1"]
 [ext_resource type="PackedScene" uid="uid://brrhgu0ckfn85" path="res://Scenes/coin.tscn" id="14_6iucq"]
+[ext_resource type="PackedScene" uid="uid://dcacedmoetfj3" path="res://Scenes/side_scroller.tscn" id="15_fcg6d"]
+[ext_resource type="PackedScene" uid="uid://b3yriet48r7o7" path="res://Scenes/end_door.tscn" id="16_3227t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e78ah"]
 size = Vector2(6.8640003, 313.33334)
 
 [sub_resource type="QuadMesh" id="QuadMesh_nsqb1"]
+size = Vector2(20, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ln4nl"]
+size = Vector2(17.202656, 313.33334)
+
+[sub_resource type="QuadMesh" id="QuadMesh_eu5mq"]
+size = Vector2(20, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_btea2"]
+size = Vector2(17.202656, 313.33334)
+
+[sub_resource type="QuadMesh" id="QuadMesh_bdn52"]
 size = Vector2(20, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t60mx"]
@@ -115,6 +129,9 @@ size = Vector2(20, 15)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qxw0v"]
 size = Vector2(2.8333282, 31.000002)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_47koa"]
+size = Vector2(1589, 110)
+
 [node name="Level4" type="Node2D" unique_id=643751682]
 script = ExtResource("1_nsqb1")
 
@@ -154,6 +171,34 @@ shape = SubResource("RectangleShape2D_e78ah")
 position = Vector2(-22.65, 0)
 scale = Vector2(3.435, 7.8333335)
 mesh = SubResource("QuadMesh_nsqb1")
+
+[node name="StaticBody2D12" type="StaticBody2D" parent="." unique_id=1543425590]
+position = Vector2(1250, 359)
+scale = Vector2(9.985, 3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D12" unique_id=1921122349]
+position = Vector2(51.693275, 0)
+scale = Vector2(10.000001, 0.5)
+shape = SubResource("RectangleShape2D_ln4nl")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D12" unique_id=185467201]
+position = Vector2(51.678288, 0)
+scale = Vector2(8.602828, 7.8333335)
+mesh = SubResource("QuadMesh_eu5mq")
+
+[node name="StaticBody2D13" type="StaticBody2D" parent="." unique_id=636041585]
+position = Vector2(1250, -211)
+scale = Vector2(9.985, 3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D13" unique_id=441613156]
+position = Vector2(51.693275, 0)
+scale = Vector2(10.000001, 0.5)
+shape = SubResource("RectangleShape2D_btea2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D13" unique_id=1419205008]
+position = Vector2(51.67828, 0)
+scale = Vector2(8.602828, 7.8333335)
+mesh = SubResource("QuadMesh_bdn52")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=724441280]
 position = Vector2(-560, -117)
@@ -217,6 +262,19 @@ position = Vector2(0, -12.750002)
 shape = SubResource("RectangleShape2D_y1fcd")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D10" unique_id=1542005534]
+position = Vector2(0, -12.825001)
+scale = Vector2(1, 2.2824998)
+mesh = SubResource("QuadMesh_fcg6d")
+
+[node name="StaticBody2D14" type="StaticBody2D" parent="." unique_id=1197482055]
+position = Vector2(2615, 275)
+scale = Vector2(1, 20)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D14" unique_id=1930735268]
+position = Vector2(0, -12.750002)
+shape = SubResource("RectangleShape2D_y1fcd")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D14" unique_id=521984019]
 position = Vector2(0, -12.825001)
 scale = Vector2(1, 2.2824998)
 mesh = SubResource("QuadMesh_fcg6d")
@@ -459,15 +517,29 @@ position = Vector2(-527, -332)
 rotation = 3.1415927
 scale = Vector2(2.3, 1.5)
 
+[node name="OnewayPlatform5" parent="." unique_id=1533369365 instance=ExtResource("7_fqog2")]
+position = Vector2(1032, 74)
+rotation = 1.5707964
+scale = Vector2(5, 1.5)
+
 [node name="JumpingAlternatingPlatforms" parent="." unique_id=1339691229 node_paths=PackedStringArray("_orangeMeshInstance2DList", "_yellowMeshInstance2DList", "_orangeCollisionShape2DList", "_yellowCollisionShape2DList") instance=ExtResource("8_fqog2")]
 position = Vector2(250, 141)
 _orangeMeshInstance2DList = [NodePath("OrangePlatform/MeshInstance2D"), NodePath("OrangePlatform2/MeshInstance2D"), NodePath("OrangePlatform3/MeshInstance2D")]
-_yellowMeshInstance2DList = [NodePath("YellowPlatform/MeshInstance2D"), NodePath("YellowPlatform2/MeshInstance2D"), NodePath("YellowPlatform3/MeshInstance2D")]
+_yellowMeshInstance2DList = [NodePath("YellowPlatform/MeshInstance2D"), NodePath("YellowPlatform2/MeshInstance2D"), NodePath("YellowPlatform3/MeshInstance2D"), NodePath("YellowPlatform4/MeshInstance2D")]
 _orangeCollisionShape2DList = [NodePath("OrangePlatform/CollisionShape2D"), NodePath("OrangePlatform2/CollisionShape2D"), NodePath("OrangePlatform3/CollisionShape2D")]
-_yellowCollisionShape2DList = [NodePath("YellowPlatform/CollisionShape2D"), NodePath("YellowPlatform2/CollisionShape2D"), NodePath("YellowPlatform3/CollisionShape2D")]
+_yellowCollisionShape2DList = [NodePath("YellowPlatform/CollisionShape2D"), NodePath("YellowPlatform2/CollisionShape2D"), NodePath("YellowPlatform3/CollisionShape2D"), NodePath("YellowPlatform4/CollisionShape2D")]
+
+[node name="OrangePlatform" parent="JumpingAlternatingPlatforms" index="0" unique_id=1696143198]
+position = Vector2(-70, -53)
+scale = Vector2(2, 1)
+
+[node name="YellowPlatform" parent="JumpingAlternatingPlatforms" index="1" unique_id=1921134071]
+position = Vector2(23, -57)
+scale = Vector2(2, 1)
 
 [node name="OrangePlatform2" type="StaticBody2D" parent="JumpingAlternatingPlatforms" unique_id=1658453253]
-position = Vector2(-50, -26)
+position = Vector2(111, -65)
+scale = Vector2(2, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="JumpingAlternatingPlatforms/OrangePlatform2" unique_id=155547283]
 scale = Vector2(1, 0.5)
@@ -479,7 +551,8 @@ scale = Vector2(1, 0.5)
 mesh = SubResource("QuadMesh_jrbl5")
 
 [node name="YellowPlatform2" type="StaticBody2D" parent="JumpingAlternatingPlatforms" unique_id=1412446619]
-position = Vector2(50, -26)
+position = Vector2(196, -69)
+scale = Vector2(2, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="JumpingAlternatingPlatforms/YellowPlatform2" unique_id=486700601]
 scale = Vector2(1, 0.5)
@@ -491,7 +564,8 @@ scale = Vector2(1, 0.5)
 mesh = SubResource("QuadMesh_xftji")
 
 [node name="OrangePlatform3" type="StaticBody2D" parent="JumpingAlternatingPlatforms" unique_id=79915127]
-position = Vector2(-50, -50)
+position = Vector2(321, -79)
+scale = Vector2(5, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="JumpingAlternatingPlatforms/OrangePlatform3" unique_id=501597625]
 scale = Vector2(1, 0.5)
@@ -503,13 +577,28 @@ scale = Vector2(1, 0.5)
 mesh = SubResource("QuadMesh_jrbl5")
 
 [node name="YellowPlatform3" type="StaticBody2D" parent="JumpingAlternatingPlatforms" unique_id=1157700076]
-position = Vector2(50, -50)
+position = Vector2(528, -13)
+scale = Vector2(2, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="JumpingAlternatingPlatforms/YellowPlatform3" unique_id=1562330187]
 scale = Vector2(1, 0.5)
 shape = SubResource("RectangleShape2D_7ql8w")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="JumpingAlternatingPlatforms/YellowPlatform3" unique_id=1655208766]
+modulate = Color(0.9411765, 0.8156863, 0.1254902, 1)
+scale = Vector2(1, 0.5)
+mesh = SubResource("QuadMesh_xftji")
+
+[node name="YellowPlatform4" type="StaticBody2D" parent="JumpingAlternatingPlatforms" unique_id=929495199]
+position = Vector2(662, -67)
+rotation = 1.5707964
+scale = Vector2(5, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="JumpingAlternatingPlatforms/YellowPlatform4" unique_id=986806740]
+scale = Vector2(1, 0.5)
+shape = SubResource("RectangleShape2D_7ql8w")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="JumpingAlternatingPlatforms/YellowPlatform4" unique_id=42663108]
 modulate = Color(0.9411765, 0.8156863, 0.1254902, 1)
 scale = Vector2(1, 0.5)
 mesh = SubResource("QuadMesh_xftji")
@@ -613,9 +702,34 @@ position = Vector2(94, -331)
 rotation = 1.5707964
 scale = Vector2(28, 10)
 
+[node name="DeadlyGround4" parent="." unique_id=846258549 instance=ExtResource("12_x4mg1")]
+z_index = -1
+position = Vector2(522, 342)
+scale = Vector2(85, 300)
+
+[node name="SideScroller" parent="." unique_id=1693661058 instance=ExtResource("15_fcg6d")]
+position = Vector2(1156, 71)
+
+[node name="CollisionShape2D" parent="SideScroller" index="0" unique_id=1417837179]
+position = Vector2(674.5, 0)
+shape = SubResource("RectangleShape2D_47koa")
+
+[node name="Camera2D" parent="SideScroller" index="1" unique_id=1758238500]
+_duration = 20.0
+
+[node name="CameraMarker" parent="SideScroller" index="2" unique_id=1557578620]
+position = Vector2(1469, 0)
+
+[node name="EndDoor" parent="." unique_id=654912369 instance=ExtResource("16_3227t")]
+z_index = -1
+position = Vector2(2604, 76)
+scale = Vector2(1, 5)
+
 [editable path="ButtonDoorCombo"]
 [editable path="AlternatingPlatforms"]
 [editable path="JumpingAlternatingPlatforms"]
 [editable path="Ice Platform/Ice2"]
 [editable path="Ice Platform2/Ice2"]
 [editable path="Teleporter"]
+[editable path="SideScroller"]
+[editable path="SideScroller/Camera2D/DeadlyGround"]

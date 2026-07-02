@@ -5,10 +5,17 @@ public partial class WallOfDoom : Area2D {
 	
 	[Export] private int _wallSpeed;
 	[Export] private bool _horizontal;
+	[Export] private bool _startActive = true;
+	[Export] private MeshInstance2D _mesh;
+	[Export] private CollisionShape2D _col;
 	private Vector2 _movementVector = Vector2.Zero;
 	private bool _start = false;
 	public override void _Ready() {
 		BodyEntered += OnBodyEntered;
+		if (!_startActive) {
+			_mesh.Hide();
+			_col.CallDeferred("set_disabled", true);
+		}
 		if (_horizontal) {
 			_movementVector.X = _wallSpeed;
 		} else {
@@ -26,6 +33,10 @@ public partial class WallOfDoom : Area2D {
 	private void OnBodyEntered(Node2D body) {
 		if (body is PlayerController) {
 			_start = true;
+			if (!_startActive) {
+				_mesh.Show();
+				_col.CallDeferred("set_disabled", false);
+			}
 		}
 	}
 }

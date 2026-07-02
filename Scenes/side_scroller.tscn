@@ -2,9 +2,19 @@
 
 [ext_resource type="Script" uid="uid://bpeghi7jhom0w" path="res://Scripts/SideScroller.cs" id="1_nev8x"]
 [ext_resource type="Script" uid="uid://b0ii5ktt1eh3u" path="res://Scripts/SideScrollerCamera.cs" id="2_grra8"]
+[ext_resource type="PackedScene" uid="uid://b1us1u1nbvisq" path="res://Scenes/deadly_ground.tscn" id="3_grra8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3egk7"]
 size = Vector2(240, 110)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_grra8"]
+size = Vector2(10, 110)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2n8bm"]
+size = Vector2(10, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jhddm"]
+size = Vector3(10, 1, 1)
 
 [node name="SideScroller" type="Area2D" unique_id=1693661058 node_paths=PackedStringArray("_camera")]
 script = ExtResource("1_nev8x")
@@ -13,10 +23,37 @@ _camera = NodePath("Camera2D")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1417837179]
 shape = SubResource("RectangleShape2D_3egk7")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1758238500 node_paths=PackedStringArray("_cameraEndpoint")]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1758238500 node_paths=PackedStringArray("_cameraEndpoint", "_mesh", "_col")]
 position = Vector2(-120, 0)
 script = ExtResource("2_grra8")
 _cameraEndpoint = NodePath("../CameraMarker")
+_mesh = NodePath("DeadlyGround/MeshInstance2D")
+_col = NodePath("DeadlyGround/CollisionShape2D")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Camera2D" unique_id=304082921]
+position = Vector2(1.1920929e-07, -1.4216276e-14)
+rotation = 1.5707964
+scale = Vector2(10, 10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/StaticBody2D" unique_id=228929100]
+position = Vector2(-2.2511365e-06, -51.5)
+rotation = -1.5707964
+scale = Vector2(0.099999994, 0.099999994)
+shape = SubResource("RectangleShape2D_grra8")
+
+[node name="DeadlyGround" parent="Camera2D" unique_id=1019992511 instance=ExtResource("3_grra8")]
+position = Vector2(-540, 1.8331948e-12)
+rotation = 1.5707964
+
+[node name="CollisionShape2D" parent="Camera2D/DeadlyGround" index="0" unique_id=1588458503]
+scale = Vector2(1.1, 1)
+shape = SubResource("RectangleShape2D_2n8bm")
+
+[node name="MeshInstance2D" parent="Camera2D/DeadlyGround" index="1" unique_id=437384590]
+scale = Vector2(1.1, 1)
+mesh = SubResource("BoxMesh_jhddm")
 
 [node name="CameraMarker" type="Marker2D" parent="." unique_id=1557578620]
 position = Vector2(120, 0)
+
+[editable path="Camera2D/DeadlyGround"]
