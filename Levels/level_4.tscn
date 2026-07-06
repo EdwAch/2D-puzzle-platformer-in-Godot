@@ -16,6 +16,8 @@
 [ext_resource type="PackedScene" uid="uid://brrhgu0ckfn85" path="res://Scenes/coin.tscn" id="14_6iucq"]
 [ext_resource type="PackedScene" uid="uid://dcacedmoetfj3" path="res://Scenes/side_scroller.tscn" id="15_fcg6d"]
 [ext_resource type="PackedScene" uid="uid://b3yriet48r7o7" path="res://Scenes/end_door.tscn" id="16_3227t"]
+[ext_resource type="PackedScene" uid="uid://cj13rkdordyc2" path="res://Scenes/spike.tscn" id="17_jovq6"]
+[ext_resource type="PackedScene" uid="uid://cs1p5tq11vt47" path="res://Scenes/wind_spot.tscn" id="18_g7gqs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e78ah"]
 size = Vector2(6.8640003, 313.33334)
@@ -131,6 +133,23 @@ size = Vector2(2.8333282, 31.000002)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_47koa"]
 size = Vector2(1589, 110)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lvag0"]
+load_path = "res://.godot/imported/wind.png-24a058b676cbd8386021204f86d60bdf.ctex"
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qxw0v"]
+lifetime_randomness = 0.4
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(75, 0, 0)
+emission_shape = 3
+emission_box_extents = Vector3(1, 80, 1)
+spread = 2.0
+initial_velocity_min = -100.0
+gravity = Vector3(-100, 0, 0)
+linear_accel_min = -2.0000021
+linear_accel_max = -2.2351742e-06
+scale_min = 0.59999996
+scale_max = 1.1999999
 
 [node name="Level4" type="Node2D" unique_id=643751682]
 script = ExtResource("1_nsqb1")
@@ -524,9 +543,9 @@ scale = Vector2(5, 1.5)
 
 [node name="JumpingAlternatingPlatforms" parent="." unique_id=1339691229 node_paths=PackedStringArray("_orangeMeshInstance2DList", "_yellowMeshInstance2DList", "_orangeCollisionShape2DList", "_yellowCollisionShape2DList") instance=ExtResource("8_fqog2")]
 position = Vector2(250, 141)
-_orangeMeshInstance2DList = [NodePath("OrangePlatform/MeshInstance2D"), NodePath("OrangePlatform2/MeshInstance2D"), NodePath("OrangePlatform3/MeshInstance2D")]
+_orangeMeshInstance2DList = [NodePath("OrangePlatform/MeshInstance2D"), NodePath("OrangePlatform2/MeshInstance2D"), NodePath("OrangePlatform3/MeshInstance2D"), NodePath("OrangePlatform4/MeshInstance2D")]
 _yellowMeshInstance2DList = [NodePath("YellowPlatform/MeshInstance2D"), NodePath("YellowPlatform2/MeshInstance2D"), NodePath("YellowPlatform3/MeshInstance2D"), NodePath("YellowPlatform4/MeshInstance2D")]
-_orangeCollisionShape2DList = [NodePath("OrangePlatform/CollisionShape2D"), NodePath("OrangePlatform2/CollisionShape2D"), NodePath("OrangePlatform3/CollisionShape2D")]
+_orangeCollisionShape2DList = [NodePath("OrangePlatform/CollisionShape2D"), NodePath("OrangePlatform2/CollisionShape2D"), NodePath("OrangePlatform3/CollisionShape2D"), NodePath("OrangePlatform4/CollisionShape2D")]
 _yellowCollisionShape2DList = [NodePath("YellowPlatform/CollisionShape2D"), NodePath("YellowPlatform2/CollisionShape2D"), NodePath("YellowPlatform3/CollisionShape2D"), NodePath("YellowPlatform4/CollisionShape2D")]
 
 [node name="OrangePlatform" parent="JumpingAlternatingPlatforms" index="0" unique_id=1696143198]
@@ -572,6 +591,19 @@ scale = Vector2(1, 0.5)
 shape = SubResource("RectangleShape2D_dqkp2")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="JumpingAlternatingPlatforms/OrangePlatform3" unique_id=103893477]
+modulate = Color(0.9098039, 0.47058824, 0.1254902, 1)
+scale = Vector2(1, 0.5)
+mesh = SubResource("QuadMesh_jrbl5")
+
+[node name="OrangePlatform4" type="StaticBody2D" parent="JumpingAlternatingPlatforms" unique_id=2026248529]
+position = Vector2(952, -42)
+scale = Vector2(5, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="JumpingAlternatingPlatforms/OrangePlatform4" unique_id=1801918904]
+scale = Vector2(1, 0.5)
+shape = SubResource("RectangleShape2D_dqkp2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="JumpingAlternatingPlatforms/OrangePlatform4" unique_id=1523662044]
 modulate = Color(0.9098039, 0.47058824, 0.1254902, 1)
 scale = Vector2(1, 0.5)
 mesh = SubResource("QuadMesh_jrbl5")
@@ -690,6 +722,9 @@ position = Vector2(46, -340)
 [node name="Coin6" parent="." unique_id=711264129 instance=ExtResource("14_6iucq")]
 position = Vector2(84, -79)
 
+[node name="Coin7" parent="." unique_id=1315403019 instance=ExtResource("14_6iucq")]
+position = Vector2(1115, 42)
+
 [node name="DeadlyGround2" parent="." unique_id=2087689282 instance=ExtResource("12_x4mg1")]
 z_index = -1
 position = Vector2(34, -123.00001)
@@ -725,6 +760,69 @@ z_index = -1
 position = Vector2(2604, 76)
 scale = Vector2(1, 5)
 
+[node name="Spike" parent="." unique_id=1083087655 instance=ExtResource("17_jovq6")]
+position = Vector2(1142, 114)
+
+[node name="WindSpot" parent="." unique_id=859520783 instance=ExtResource("18_g7gqs")]
+position = Vector2(1675, 77)
+scale = Vector2(4, 0.7)
+
+[node name="GPUParticles2D" parent="WindSpot" index="1" unique_id=1263439148]
+amount = 20
+texture = SubResource("CompressedTexture2D_lvag0")
+lifetime = 1.75
+process_material = SubResource("ParticleProcessMaterial_qxw0v")
+
+[node name="TripleSpikes2" parent="." unique_id=58113241 instance=ExtResource("10_m0m22")]
+position = Vector2(1340, 116)
+
+[node name="CrumblingPlatform5" parent="." unique_id=442799570 instance=ExtResource("4_t60mx")]
+position = Vector2(1492, 74)
+rotation = -1.5707964
+scale = Vector2(2.5, 1.5)
+
+[node name="Timer" parent="CrumblingPlatform5/Area2D" parent_id_path=PackedInt32Array(442799570, 1685527649) index="1" unique_id=467719701]
+wait_time = 4.0
+
+[node name="CrumblingPlatform6" parent="." unique_id=1593278283 instance=ExtResource("4_t60mx")]
+position = Vector2(1609, 103)
+scale = Vector2(1.5, 1.25)
+
+[node name="Timer" parent="CrumblingPlatform6/Area2D" parent_id_path=PackedInt32Array(1593278283, 1685527649) index="1" unique_id=467719701]
+wait_time = 4.0
+
+[node name="CrumblingPlatform7" parent="." unique_id=147871276 instance=ExtResource("4_t60mx")]
+position = Vector2(1718.0001, 89)
+scale = Vector2(1.5, 1.25)
+
+[node name="Timer" parent="CrumblingPlatform7/Area2D" parent_id_path=PackedInt32Array(147871276, 1685527649) index="1" unique_id=467719701]
+wait_time = 4.0
+
+[node name="CrumblingPlatform8" parent="." unique_id=955695275 instance=ExtResource("4_t60mx")]
+position = Vector2(1831.0001, 97)
+scale = Vector2(1.5, 1.25)
+
+[node name="Timer" parent="CrumblingPlatform8/Area2D" parent_id_path=PackedInt32Array(955695275, 1685527649) index="1" unique_id=467719701]
+wait_time = 4.0
+
+[node name="DeadlyGround5" parent="." unique_id=1164886141 instance=ExtResource("12_x4mg1")]
+z_index = -1
+position = Vector2(1195, 124.00001)
+
+[node name="DeadlyGround6" parent="." unique_id=993564596 instance=ExtResource("12_x4mg1")]
+z_index = -1
+position = Vector2(1772, 124.00001)
+scale = Vector2(40, 10)
+
+[node name="TripleSpikes3" parent="." unique_id=1777529594 instance=ExtResource("10_m0m22")]
+position = Vector2(2168, 116)
+
+[node name="TripleSpikes4" parent="." unique_id=213457998 instance=ExtResource("10_m0m22")]
+position = Vector2(2328, 116)
+
+[node name="TripleSpikes5" parent="." unique_id=655612633 instance=ExtResource("10_m0m22")]
+position = Vector2(2488, 116)
+
 [editable path="ButtonDoorCombo"]
 [editable path="AlternatingPlatforms"]
 [editable path="JumpingAlternatingPlatforms"]
@@ -733,3 +831,8 @@ scale = Vector2(1, 5)
 [editable path="Teleporter"]
 [editable path="SideScroller"]
 [editable path="SideScroller/Camera2D/DeadlyGround"]
+[editable path="WindSpot"]
+[editable path="CrumblingPlatform5"]
+[editable path="CrumblingPlatform6"]
+[editable path="CrumblingPlatform7"]
+[editable path="CrumblingPlatform8"]
