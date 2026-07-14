@@ -8,6 +8,7 @@ public partial class UI : CanvasLayer {
 	[Export] private Button endButton;
 	[Export] private RichTextLabel endTypeText;
 	[Export] private RichTextLabel endStatsText;
+	[Export] private MarginContainer HUD;
 
 	private bool _restartLevel;
 	private int _score;
@@ -49,5 +50,13 @@ public partial class UI : CanvasLayer {
 
 	public void HideEndUI() {
 		endUI.Hide();
+	}
+
+	public void ShowHUD() {
+		HUD.Show();
+	}
+
+	public void HideHUD() {
+		HUD.Hide();
 	}
 }

@@ -30,6 +30,13 @@ public partial class GameManager : Node2D {
 		}
 	}
 
+	public void GoToLevel(int value) {
+		_levelNumber = value;
+		LevelManager.Instance.CallDeferred(nameof(LevelManager.LoadLevel), levelList[_levelNumber]);
+		LevelStarted();
+		_score = 0;
+	}
+
 	public void ReloadLevel() {
 		LevelManager.Instance.CallDeferred(nameof(LevelManager.LoadLevel), levelList[_levelNumber]);
 		LevelStarted();

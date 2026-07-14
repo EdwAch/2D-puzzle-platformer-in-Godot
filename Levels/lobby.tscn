@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://beri67xaqnmri"]
+
+[ext_resource type="Script" uid="uid://c6f8kuperq5xi" path="res://Scripts/Level.cs" id="1_e6h1a"]
+[ext_resource type="PackedScene" uid="uid://bettmyyl1chu7" path="res://Scenes/lobby_door.tscn" id="2_x6ugl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yto6v"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_e6h1a"]
+size = Vector2(20, 20)
+
+[node name="Lobby" type="Node2D" unique_id=872340212]
+script = ExtResource("1_e6h1a")
+_isLobby = true
+
+[node name="FloorAndWalls" type="Node2D" parent="." unique_id=1242662444]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="FloorAndWalls" unique_id=1806757032]
+scale = Vector2(60, 10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorAndWalls/StaticBody2D" unique_id=350402513]
+shape = SubResource("RectangleShape2D_yto6v")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="FloorAndWalls/StaticBody2D" unique_id=1615563861]
+mesh = SubResource("QuadMesh_e6h1a")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="FloorAndWalls" unique_id=328026829]
+position = Vector2(-590, -200)
+scale = Vector2(1, 10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorAndWalls/StaticBody2D2" unique_id=1835811423]
+shape = SubResource("RectangleShape2D_yto6v")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="FloorAndWalls/StaticBody2D2" unique_id=1630429794]
+mesh = SubResource("QuadMesh_e6h1a")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="FloorAndWalls" unique_id=1456663459]
+position = Vector2(590, -200)
+scale = Vector2(1, 10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorAndWalls/StaticBody2D3" unique_id=922547445]
+shape = SubResource("RectangleShape2D_yto6v")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="FloorAndWalls/StaticBody2D3" unique_id=735158903]
+mesh = SubResource("QuadMesh_e6h1a")
+
+[node name="LobbyDoor" parent="." unique_id=1432231907 instance=ExtResource("2_x6ugl")]
+position = Vector2(-320, -140)
+_levelNumber = 1
+
+[node name="LobbyDoor2" parent="." unique_id=1621272301 instance=ExtResource("2_x6ugl")]
+position = Vector2(-160, -140)
+_levelNumber = 2
+
+[node name="LobbyDoor3" parent="." unique_id=1112500964 instance=ExtResource("2_x6ugl")]
+position = Vector2(0, -140)
+_levelNumber = 3
+
+[node name="LobbyDoor4" parent="." unique_id=1357566721 instance=ExtResource("2_x6ugl")]
+position = Vector2(160, -140)
+_levelNumber = 4
+
+[node name="LobbyDoor5" parent="." unique_id=2123766957 instance=ExtResource("2_x6ugl")]
+position = Vector2(320, -140)
+_levelNumber = 5
+
+[node name="Spawnpoint" type="Marker2D" parent="." unique_id=1345230880]
+position = Vector2(-537, -139)
+scale = Vector2(5.84, 1)

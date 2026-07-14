@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://bettmyyl1chu7"]
+
+[ext_resource type="Script" uid="uid://couktj8y2uhmm" path="res://Scripts/LobbyDoor.cs" id="1_gfhv1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8336w"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_7a11m"]
+size = Vector2(20, 20)
+
+[node name="LobbyDoor" type="Area2D" unique_id=1432231907 node_paths=PackedStringArray("_textLabel")]
+script = ExtResource("1_gfhv1")
+_textLabel = NodePath("Control/RichTextLabel")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=598246580]
+scale = Vector2(2.75, 4)
+shape = SubResource("RectangleShape2D_8336w")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=1833971367]
+modulate = Color(0.5882353, 0.29411766, 0, 1)
+scale = Vector2(2, 4)
+mesh = SubResource("QuadMesh_7a11m")
+
+[node name="Control" type="Control" parent="." unique_id=1951366685]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control" unique_id=1170319130]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = -207.0
+offset_top = -225.0
+offset_right = 207.0
+offset_bottom = -49.0
+theme_override_font_sizes/normal_font_size = 64
+theme_override_font_sizes/bold_font_size = 64
+bbcode_enabled = true
+text = "Press E to enter level 0"
+fit_content = true

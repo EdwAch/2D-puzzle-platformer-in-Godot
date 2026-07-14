@@ -12,13 +12,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1878701064 node_paths=PackedStringArray("statsText", "endUI", "endButton", "endTypeText", "endStatsText")]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1878701064 node_paths=PackedStringArray("statsText", "endUI", "endButton", "endTypeText", "endStatsText", "HUD")]
 script = ExtResource("1_tcpi4")
 statsText = NodePath("HUD/MarginContainer/Panel/MarginContainer/StatsText")
 endUI = NodePath("EndUI")
 endButton = NodePath("EndUI/MarginContainer/Panel/MarginContainer/MarginContainer/Button")
 endTypeText = NodePath("EndUI/MarginContainer/Panel/MarginContainer2/LevelEndText")
 endStatsText = NodePath("EndUI/MarginContainer/Panel/MarginContainer/EndStatsText")
+HUD = NodePath("HUD")
 
 [node name="HUD" type="MarginContainer" parent="CanvasLayer" unique_id=1045153345]
 anchors_preset = 15
