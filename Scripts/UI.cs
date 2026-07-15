@@ -6,6 +6,7 @@ public partial class UI : CanvasLayer {
 	[Export] private RichTextLabel statsText;
 	[Export] private MarginContainer endUI;
 	[Export] private Button endButton;
+	[Export] private Button lobbyButton;
 	[Export] private RichTextLabel endTypeText;
 	[Export] private RichTextLabel endStatsText;
 	[Export] private MarginContainer HUD;
@@ -16,6 +17,7 @@ public partial class UI : CanvasLayer {
     public override void _Ready() {
         Instance = this;
 		endButton.Pressed += ButtonPressed;
+		lobbyButton.Pressed += LobbyButtonPressed;
 		HideEndUI();
     }
 	public void UpdateStats(int score, int time) {
@@ -34,8 +36,14 @@ public partial class UI : CanvasLayer {
 		}
 		HideEndUI();
 	}
+
+	private void LobbyButtonPressed() {
+		GameManager.Instance.GoToLevel(0);
+		HideEndUI();
+	}
 	
 	public void ShowEndUI(bool survived) {
+		lobbyButton.Text ="Return to Lobby";
 		if (survived) {
 			endButton.Text = "Next Level";
 			endTypeText.Text = "[b]LEVEL COMPLETE!";

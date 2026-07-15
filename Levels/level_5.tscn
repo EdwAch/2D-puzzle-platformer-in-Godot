@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://b02w63vu4mffp"]
+
+[ext_resource type="Script" uid="uid://c6f8kuperq5xi" path="res://Scripts/Level.cs" id="1_a6k8o"]
+[ext_resource type="PackedScene" uid="uid://c0nfsi4od1ogt" path="res://Scenes/safety_net.tscn" id="2_ftuqy"]
+[ext_resource type="PackedScene" uid="uid://ddna045rfwn3k" path="res://Scenes/teleporter.tscn" id="3_pses1"]
+[ext_resource type="PackedScene" uid="uid://cpds45qkavom4" path="res://Scenes/wall_of_doom.tscn" id="4_u0s3x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pses1"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_u0s3x"]
+size = Vector2(20, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ftuqy"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_pses1"]
+size = Vector2(20, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u0s3x"]
+size = Vector2(3, 20)
+
+[sub_resource type="QuadMesh" id="QuadMesh_ki7po"]
+size = Vector2(3, 20)
+
+[node name="Level5" type="Node2D" unique_id=2096037857]
+script = ExtResource("1_a6k8o")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=953603295]
+position = Vector2(322.00003, 180)
+scale = Vector2(60, 10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1204433086]
+shape = SubResource("RectangleShape2D_pses1")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D" unique_id=304547761]
+mesh = SubResource("QuadMesh_u0s3x")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=1711673816]
+position = Vector2(-45, -20)
+scale = Vector2(1, 10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=845524018]
+shape = SubResource("RectangleShape2D_ftuqy")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D2" unique_id=942707587]
+mesh = SubResource("QuadMesh_pses1")
+
+[node name="SafetyNet" parent="." unique_id=693047989 instance=ExtResource("2_ftuqy")]
+position = Vector2(0, 8)
+
+[node name="Spawnpoint" type="Marker2D" parent="." unique_id=65508997]
+position = Vector2(-177, 66)
+
+[node name="Teleporter" parent="." unique_id=1955934454 instance=ExtResource("3_pses1")]
+position = Vector2(-56, -10)
+
+[node name="CollisionShape2D" parent="Teleporter" index="0" unique_id=1654710985]
+position = Vector2(0.16666663, 0)
+shape = SubResource("RectangleShape2D_u0s3x")
+
+[node name="MeshInstance2D" parent="Teleporter" index="1" unique_id=113377586]
+position = Vector2(0.16666663, 0)
+mesh = SubResource("QuadMesh_ki7po")
+
+[node name="Marker2D" parent="Teleporter" index="2" unique_id=2049922949]
+position = Vector2(17.666668, 8.111113)
+
+[node name="WallOfDoom" parent="." unique_id=1920996098 instance=ExtResource("4_u0s3x")]
+position = Vector2(-378, 270)
+rotation = 1.5707964
+_wallSpeed = -20
+_horizontal = false
+
+[node name="CollisionShape2D" parent="WallOfDoom" index="0" unique_id=2029295756]
+position = Vector2(-194, 8.4800095e-06)
+
+[node name="Timer" parent="WallOfDoom" index="2" unique_id=1291609011]
+wait_time = 6.0
+
+[editable path="Teleporter"]
+[editable path="WallOfDoom"]
+[editable path="WallOfDoom/DeadlyGround"]

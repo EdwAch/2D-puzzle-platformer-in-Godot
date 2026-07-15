@@ -1172,6 +1172,9 @@ position = Vector2(293.5, -1)
 z_index = -1
 scale = Vector2(22, 20)
 
+[node name="Timer" parent="WallOfDoom" index="2" unique_id=1291609011]
+wait_time = 100.0
+
 [node name="CrumblingPlatform5" parent="." unique_id=254587793 instance=ExtResource("12_oojpf")]
 position = Vector2(-304, 24)
 scale = Vector2(1.5, 1)

@@ -8,7 +8,6 @@ public partial class AlternatingPlatforms : Node2D {
 	[Export] private MeshInstance2D[] _purpleMeshInstance2DList;
 	[Export] private CollisionShape2D[] _greenCollisionShape2DList;
 	[Export] private CollisionShape2D[] _purpleCollisionShape2DList;
-	private float _timerTime;
 	private int _loops;
 	private bool _greenHidden = false;
 	public override void _Ready() {
