@@ -4,15 +4,48 @@
 [ext_resource type="PackedScene" uid="uid://c0nfsi4od1ogt" path="res://Scenes/safety_net.tscn" id="2_ftuqy"]
 [ext_resource type="PackedScene" uid="uid://ddna045rfwn3k" path="res://Scenes/teleporter.tscn" id="3_pses1"]
 [ext_resource type="PackedScene" uid="uid://cpds45qkavom4" path="res://Scenes/wall_of_doom.tscn" id="4_u0s3x"]
+[ext_resource type="PackedScene" uid="uid://6rsxjvc0x5v" path="res://Scenes/jumping_alternating_platforms.tscn" id="5_ki7po"]
+[ext_resource type="PackedScene" uid="uid://cptw5h4x04tmi" path="res://Scenes/oneway_platform.tscn" id="6_ytgun"]
+[ext_resource type="PackedScene" uid="uid://sokoe3urch7j" path="res://Scenes/crumbling_platform.tscn" id="7_rpnhq"]
+[ext_resource type="PackedScene" uid="uid://cj13rkdordyc2" path="res://Scenes/spike.tscn" id="8_hu0ol"]
+[ext_resource type="PackedScene" uid="uid://brrhgu0ckfn85" path="res://Scenes/coin.tscn" id="9_m47b0"]
+[ext_resource type="PackedScene" uid="uid://bsyc0edw7u6kj" path="res://Scenes/button_door_combo.tscn" id="10_x7gsr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pses1"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_u0s3x"]
 size = Vector2(20, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uk1uv"]
+size = Vector2(20, 27.08)
+
+[sub_resource type="QuadMesh" id="QuadMesh_25373"]
+size = Vector2(20, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vybpl"]
+size = Vector2(20, 27)
+
+[sub_resource type="QuadMesh" id="QuadMesh_f6crn"]
+size = Vector2(20, 20)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ftuqy"]
 
+[sub_resource type="QuadMesh" id="QuadMesh_321yd"]
+size = Vector2(20, 20)
+
 [sub_resource type="QuadMesh" id="QuadMesh_pses1"]
+size = Vector2(20, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k35fw"]
+size = Vector2(20, 10)
+
+[sub_resource type="QuadMesh" id="QuadMesh_c02se"]
+size = Vector2(20, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1537k"]
+size = Vector2(10.875, 12)
+
+[sub_resource type="QuadMesh" id="QuadMesh_5o5kr"]
 size = Vector2(20, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u0s3x"]
@@ -20,6 +53,22 @@ size = Vector2(3, 20)
 
 [sub_resource type="QuadMesh" id="QuadMesh_ki7po"]
 size = Vector2(3, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dqkp2"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_jrbl5"]
+size = Vector2(20, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ql8w"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_xftji"]
+size = Vector2(20, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gmfyt"]
+size = Vector2(1, 84)
+
+[sub_resource type="QuadMesh" id="QuadMesh_2jyfw"]
+size = Vector2(1, 20)
 
 [node name="Level5" type="Node2D" unique_id=2096037857]
 script = ExtResource("1_a6k8o")
@@ -32,17 +81,124 @@ scale = Vector2(60, 10)
 shape = SubResource("RectangleShape2D_pses1")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D" unique_id=304547761]
+position = Vector2(0, 10)
+scale = Vector2(1, 2)
 mesh = SubResource("QuadMesh_u0s3x")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=1711673816]
 position = Vector2(-45, -20)
-scale = Vector2(1, 10)
+scale = Vector2(1, 50)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=845524018]
-shape = SubResource("RectangleShape2D_ftuqy")
+position = Vector2(0, -3.54)
+shape = SubResource("RectangleShape2D_uk1uv")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D2" unique_id=942707587]
+position = Vector2(0, -3.54)
+scale = Vector2(1, 1.354)
+mesh = SubResource("QuadMesh_25373")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=1501459567]
+position = Vector2(-488, -20)
+scale = Vector2(1, 50)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=74988150]
+position = Vector2(0, -3.5)
+shape = SubResource("RectangleShape2D_vybpl")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D3" unique_id=782797108]
+position = Vector2(0, -3.5)
+scale = Vector2(1, 1.35)
+mesh = SubResource("QuadMesh_f6crn")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="." unique_id=1556586337]
+position = Vector2(-378, 90)
+scale = Vector2(10, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4" unique_id=588497990]
+shape = SubResource("RectangleShape2D_ftuqy")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D4" unique_id=1448218057]
+position = Vector2(0, 80)
+scale = Vector2(1, 9)
+mesh = SubResource("QuadMesh_321yd")
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="." unique_id=1520166556]
+position = Vector2(-268, -270)
+scale = Vector2(1, 25)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D5" unique_id=1614572330]
+shape = SubResource("RectangleShape2D_ftuqy")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D5" unique_id=139267523]
 mesh = SubResource("QuadMesh_pses1")
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="." unique_id=1014361923]
+position = Vector2(-458, 30)
+scale = Vector2(2, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D6" unique_id=1400208585]
+shape = SubResource("RectangleShape2D_ftuqy")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D6" unique_id=36930268]
+mesh = SubResource("QuadMesh_pses1")
+
+[node name="StaticBody2D7" type="StaticBody2D" parent="." unique_id=1553766384]
+position = Vector2(-298, -20)
+scale = Vector2(2, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D7" unique_id=1196943916]
+shape = SubResource("RectangleShape2D_ftuqy")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D7" unique_id=1707475749]
+mesh = SubResource("QuadMesh_pses1")
+
+[node name="StaticBody2D8" type="StaticBody2D" parent="." unique_id=138872535]
+position = Vector2(-458, -70)
+scale = Vector2(2, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D8" unique_id=1546797513]
+shape = SubResource("RectangleShape2D_ftuqy")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D8" unique_id=966158262]
+mesh = SubResource("QuadMesh_pses1")
+
+[node name="StaticBody2D9" type="StaticBody2D" parent="." unique_id=365783145]
+position = Vector2(-438, -430)
+scale = Vector2(4, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D9" unique_id=337458080]
+shape = SubResource("RectangleShape2D_k35fw")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D9" unique_id=173144395]
+position = Vector2(0, 3.8146973e-06)
+scale = Vector2(1, 0.50000036)
+mesh = SubResource("QuadMesh_c02se")
+
+[node name="StaticBody2D10" type="StaticBody2D" parent="." unique_id=2120170880]
+position = Vector2(-318, -480)
+scale = Vector2(4, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D10" unique_id=1039120499]
+shape = SubResource("RectangleShape2D_k35fw")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D10" unique_id=925202231]
+position = Vector2(0, 3.8146973e-06)
+scale = Vector2(1, 0.50000036)
+mesh = SubResource("QuadMesh_c02se")
+
+[node name="StaticBody2D11" type="StaticBody2D" parent="." unique_id=147257389]
+position = Vector2(-76, -515)
+scale = Vector2(4, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D11" unique_id=1531594421]
+position = Vector2(-0.0625, 1)
+shape = SubResource("RectangleShape2D_1537k")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D11" unique_id=750803889]
+position = Vector2(-0.06250029, 0.99998546)
+scale = Vector2(0.54375005, 0.5999989)
+mesh = SubResource("QuadMesh_5o5kr")
 
 [node name="SafetyNet" parent="." unique_id=693047989 instance=ExtResource("2_ftuqy")]
 position = Vector2(0, 8)
@@ -74,8 +230,101 @@ _horizontal = false
 position = Vector2(-194, 8.4800095e-06)
 
 [node name="Timer" parent="WallOfDoom" index="2" unique_id=1291609011]
-wait_time = 6.0
+wait_time = 100.0
+
+[node name="JumpingAlternatingPlatforms" parent="." unique_id=1339691229 node_paths=PackedStringArray("_orangeMeshInstance2DList", "_yellowMeshInstance2DList", "_orangeCollisionShape2DList", "_yellowCollisionShape2DList") instance=ExtResource("5_ki7po")]
+position = Vector2(-385, -130)
+_orangeMeshInstance2DList = [NodePath("OrangePlatform/MeshInstance2D"), NodePath("OrangePlatform2/MeshInstance2D"), NodePath("OrangePlatform3/MeshInstance2D")]
+_yellowMeshInstance2DList = [NodePath("YellowPlatform/MeshInstance2D"), NodePath("YellowPlatform2/MeshInstance2D")]
+_orangeCollisionShape2DList = [NodePath("OrangePlatform/CollisionShape2D"), NodePath("OrangePlatform2/CollisionShape2D"), NodePath("OrangePlatform3/CollisionShape2D")]
+_yellowCollisionShape2DList = [NodePath("YellowPlatform/CollisionShape2D"), NodePath("YellowPlatform2/CollisionShape2D")]
+
+[node name="OrangePlatform" parent="JumpingAlternatingPlatforms" index="0" unique_id=1696143198]
+position = Vector2(-50, -50)
+scale = Vector2(2, 1)
+
+[node name="YellowPlatform" parent="JumpingAlternatingPlatforms" index="1" unique_id=1921134071]
+scale = Vector2(2, 1)
+
+[node name="OrangePlatform2" type="StaticBody2D" parent="JumpingAlternatingPlatforms" unique_id=79864616]
+position = Vector2(40, -150)
+scale = Vector2(2, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="JumpingAlternatingPlatforms/OrangePlatform2" unique_id=1441019125]
+scale = Vector2(1, 0.5)
+shape = SubResource("RectangleShape2D_dqkp2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="JumpingAlternatingPlatforms/OrangePlatform2" unique_id=382740722]
+modulate = Color(0.9098039, 0.47058824, 0.1254902, 1)
+scale = Vector2(1, 0.5)
+mesh = SubResource("QuadMesh_jrbl5")
+
+[node name="YellowPlatform2" type="StaticBody2D" parent="JumpingAlternatingPlatforms" unique_id=1194007937]
+position = Vector2(-73, -100)
+scale = Vector2(2, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="JumpingAlternatingPlatforms/YellowPlatform2" unique_id=1590837421]
+scale = Vector2(1, 0.5)
+shape = SubResource("RectangleShape2D_7ql8w")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="JumpingAlternatingPlatforms/YellowPlatform2" unique_id=22792252]
+modulate = Color(0.9411765, 0.8156863, 0.1254902, 1)
+scale = Vector2(1, 0.5)
+mesh = SubResource("QuadMesh_xftji")
+
+[node name="OrangePlatform3" type="StaticBody2D" parent="JumpingAlternatingPlatforms" unique_id=1222358220]
+position = Vector2(87, -250)
+scale = Vector2(2, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="JumpingAlternatingPlatforms/OrangePlatform3" unique_id=1903137642]
+scale = Vector2(1, 0.5)
+shape = SubResource("RectangleShape2D_dqkp2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="JumpingAlternatingPlatforms/OrangePlatform3" unique_id=803433235]
+modulate = Color(0.9098039, 0.47058824, 0.1254902, 1)
+scale = Vector2(1, 0.5)
+mesh = SubResource("QuadMesh_jrbl5")
+
+[node name="OnewayPlatform" parent="." unique_id=512535990 instance=ExtResource("6_ytgun")]
+position = Vector2(-273.00003, 29.999998)
+rotation = -1.5707964
+scale = Vector2(5, 2.5)
+
+[node name="CrumblingPlatform" parent="." unique_id=704336917 instance=ExtResource("7_rpnhq")]
+position = Vector2(-438, -320)
+scale = Vector2(2, 1.5)
+
+[node name="CrumblingPlatform2" parent="." unique_id=1592975947 instance=ExtResource("7_rpnhq")]
+position = Vector2(-178, -514)
+scale = Vector2(4, 2)
+
+[node name="Spike" parent="." unique_id=1083087655 instance=ExtResource("8_hu0ol")]
+position = Vector2(-468, -445)
+
+[node name="Coin" parent="." unique_id=861498250 instance=ExtResource("9_m47b0")]
+position = Vector2(-159, -248)
+
+[node name="ButtonDoorCombo" parent="." unique_id=903838637 instance=ExtResource("10_x7gsr")]
+position = Vector2(-200, 47)
+
+[node name="ButtonCombo" parent="ButtonDoorCombo" index="0" unique_id=1768127027]
+position = Vector2(-20.32656, -80.85713)
+
+[node name="Area2D" parent="ButtonDoorCombo/ButtonCombo" index="0" unique_id=1765889842 node_paths=PackedStringArray("puzzleDoor")]
+puzzleDoor = [NodePath("../../Door")]
+
+[node name="CollisionShape2D" parent="ButtonDoorCombo/Door" parent_id_path=PackedInt32Array(903838637, 1516421604) index="0" unique_id=1871321836]
+position = Vector2(0, -31.999994)
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_gmfyt")
+
+[node name="MeshInstance2D" parent="ButtonDoorCombo/Door" parent_id_path=PackedInt32Array(903838637, 1516421604) index="1" unique_id=1412607311]
+position = Vector2(0, -32.011494)
+scale = Vector2(1, 4.2011495)
+mesh = SubResource("QuadMesh_2jyfw")
 
 [editable path="Teleporter"]
 [editable path="WallOfDoom"]
 [editable path="WallOfDoom/DeadlyGround"]
+[editable path="JumpingAlternatingPlatforms"]
+[editable path="ButtonDoorCombo"]
