@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dakxdswv6xd5j"]
+
+[ext_resource type="Script" uid="uid://k4sbr08r64ns" path="res://Scripts/MovingDeadlyPlatform.cs" id="1_oulgf"]
+[ext_resource type="PackedScene" uid="uid://b1us1u1nbvisq" path="res://Scenes/deadly_ground.tscn" id="2_67d22"]
+
+[node name="MovingDeadlyPlatform" type="Node2D" unique_id=243635716 node_paths=PackedStringArray("_startingLocation", "_endingLocation", "_timer", "_deadlyPlatform")]
+script = ExtResource("1_oulgf")
+_startingLocation = NodePath("StartingLocation")
+_endingLocation = NodePath("EndingLocation")
+_timer = NodePath("Timer")
+_deadlyPlatform = NodePath("DeadlyGround")
+
+[node name="DeadlyGround" parent="." unique_id=1019992511 instance=ExtResource("2_67d22")]
+
+[node name="StartingLocation" type="Marker2D" parent="." unique_id=156476476]
+
+[node name="EndingLocation" type="Marker2D" parent="." unique_id=162918544]
+position = Vector2(100, 0)
+
+[node name="Timer" type="Timer" parent="." unique_id=1146678348]
+wait_time = 5.0
+autostart = true

@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://cj13rkdordyc2" path="res://Scenes/spike.tscn" id="8_hu0ol"]
 [ext_resource type="PackedScene" uid="uid://brrhgu0ckfn85" path="res://Scenes/coin.tscn" id="9_m47b0"]
 [ext_resource type="PackedScene" uid="uid://bsyc0edw7u6kj" path="res://Scenes/button_door_combo.tscn" id="10_x7gsr"]
+[ext_resource type="PackedScene" uid="uid://ctlnoem7a1kji" path="res://Scenes/vertical_wind_spot.tscn" id="11_rpnhq"]
+[ext_resource type="PackedScene" uid="uid://dakxdswv6xd5j" path="res://Scenes/moving_deadly_platform.tscn" id="12_hu0ol"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pses1"]
 
@@ -48,6 +50,16 @@ size = Vector2(10.875, 12)
 [sub_resource type="QuadMesh" id="QuadMesh_5o5kr"]
 size = Vector2(20, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hu0ol"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_m47b0"]
+size = Vector2(20, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x7gsr"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_uk1uv"]
+size = Vector2(20, 20)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u0s3x"]
 size = Vector2(3, 20)
 
@@ -69,6 +81,23 @@ size = Vector2(1, 84)
 
 [sub_resource type="QuadMesh" id="QuadMesh_2jyfw"]
 size = Vector2(1, 20)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_25373"]
+lifetime_randomness = 0.4
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(85, 0, 0)
+emission_shape = 3
+emission_box_extents = Vector3(1, 80, 1)
+angle_min = 90.000015
+angle_max = 90.000015
+spread = 2.0
+initial_velocity_min = -100.0
+initial_velocity_max = -10.0
+gravity = Vector3(0, -10, 0)
+linear_accel_min = -2.0000021
+linear_accel_max = -2.2351742e-06
+scale_min = 0.59999996
+scale_max = 1.1999999
 
 [node name="Level5" type="Node2D" unique_id=2096037857]
 script = ExtResource("1_a6k8o")
@@ -200,6 +229,56 @@ position = Vector2(-0.06250029, 0.99998546)
 scale = Vector2(0.54375005, 0.5999989)
 mesh = SubResource("QuadMesh_5o5kr")
 
+[node name="StaticBody2D12" type="StaticBody2D" parent="." unique_id=436486273]
+position = Vector2(5, 15)
+scale = Vector2(4, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D12" unique_id=57377234]
+shape = SubResource("RectangleShape2D_hu0ol")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D12" unique_id=911888335]
+mesh = SubResource("QuadMesh_m47b0")
+
+[node name="StaticBody2D13" type="StaticBody2D" parent="." unique_id=1502235774]
+position = Vector2(40, -280)
+scale = Vector2(0.5, 30)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D13" unique_id=1718800727]
+shape = SubResource("RectangleShape2D_x7gsr")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D13" unique_id=1992298342]
+mesh = SubResource("QuadMesh_uk1uv")
+
+[node name="StaticBody2D14" type="StaticBody2D" parent="." unique_id=1151167110]
+position = Vector2(150, -170.99998)
+scale = Vector2(0.5, 25)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D14" unique_id=678533998]
+shape = SubResource("RectangleShape2D_x7gsr")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D14" unique_id=1625687175]
+mesh = SubResource("QuadMesh_uk1uv")
+
+[node name="StaticBody2D15" type="StaticBody2D" parent="." unique_id=2027887421]
+position = Vector2(370, -280)
+scale = Vector2(0.5, 30)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D15" unique_id=1020533906]
+shape = SubResource("RectangleShape2D_x7gsr")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D15" unique_id=157202531]
+mesh = SubResource("QuadMesh_uk1uv")
+
+[node name="StaticBody2D16" type="StaticBody2D" parent="." unique_id=66946711]
+position = Vector2(205, -575)
+scale = Vector2(17, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D16" unique_id=1982598848]
+shape = SubResource("RectangleShape2D_x7gsr")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D16" unique_id=921508317]
+mesh = SubResource("QuadMesh_uk1uv")
+
 [node name="SafetyNet" parent="." unique_id=693047989 instance=ExtResource("2_ftuqy")]
 position = Vector2(0, 8)
 
@@ -298,6 +377,10 @@ scale = Vector2(2, 1.5)
 position = Vector2(-178, -514)
 scale = Vector2(4, 2)
 
+[node name="CrumblingPlatform3" parent="." unique_id=911410551 instance=ExtResource("7_rpnhq")]
+position = Vector2(260, -413.00003)
+scale = Vector2(5.25, 2.625)
+
 [node name="Spike" parent="." unique_id=1083087655 instance=ExtResource("8_hu0ol")]
 position = Vector2(-468, -445)
 
@@ -323,8 +406,41 @@ position = Vector2(0, -32.011494)
 scale = Vector2(1, 4.2011495)
 mesh = SubResource("QuadMesh_2jyfw")
 
+[node name="VerticalWindSpot" parent="." unique_id=1512867740 instance=ExtResource("11_rpnhq")]
+position = Vector2(95, -170)
+scale = Vector2(2.5, 0.5)
+
+[node name="GPUParticles2D" parent="VerticalWindSpot" index="1" unique_id=1263439148]
+amount = 20
+lifetime = 2.1999999999999997
+process_material = SubResource("ParticleProcessMaterial_25373")
+
+[node name="MovingDeadlyPlatform" parent="." unique_id=243635716 instance=ExtResource("12_hu0ol")]
+position = Vector2(205, -120)
+
+[node name="EndingLocation" parent="MovingDeadlyPlatform" index="2" unique_id=162918544]
+position = Vector2(110, 0)
+
+[node name="Timer" parent="MovingDeadlyPlatform" index="3" unique_id=1146678348]
+wait_time = 4.0
+
+[node name="MovingDeadlyPlatform2" parent="." unique_id=257980359 instance=ExtResource("12_hu0ol")]
+position = Vector2(185, -260)
+
+[node name="DeadlyGround" parent="MovingDeadlyPlatform2" index="0" unique_id=1019992511]
+scale = Vector2(6, 10)
+
+[node name="EndingLocation" parent="MovingDeadlyPlatform2" index="2" unique_id=162918544]
+position = Vector2(150, 0)
+
+[node name="Timer" parent="MovingDeadlyPlatform2" index="3" unique_id=1146678348]
+wait_time = 4.0
+
 [editable path="Teleporter"]
 [editable path="WallOfDoom"]
 [editable path="WallOfDoom/DeadlyGround"]
 [editable path="JumpingAlternatingPlatforms"]
 [editable path="ButtonDoorCombo"]
+[editable path="VerticalWindSpot"]
+[editable path="MovingDeadlyPlatform"]
+[editable path="MovingDeadlyPlatform2"]
