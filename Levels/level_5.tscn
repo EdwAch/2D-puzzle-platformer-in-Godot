@@ -12,8 +12,14 @@
 [ext_resource type="PackedScene" uid="uid://bsyc0edw7u6kj" path="res://Scenes/button_door_combo.tscn" id="10_x7gsr"]
 [ext_resource type="PackedScene" uid="uid://ctlnoem7a1kji" path="res://Scenes/vertical_wind_spot.tscn" id="11_rpnhq"]
 [ext_resource type="PackedScene" uid="uid://dakxdswv6xd5j" path="res://Scenes/moving_deadly_platform.tscn" id="12_hu0ol"]
+[ext_resource type="PackedScene" uid="uid://b1us1u1nbvisq" path="res://Scenes/deadly_ground.tscn" id="13_uk1uv"]
+[ext_resource type="PackedScene" uid="uid://xubysr1hppuv" path="res://Scenes/gravity_changer.tscn" id="14_25373"]
+[ext_resource type="PackedScene" uid="uid://bx8ontbj43gop" path="res://Scenes/ice.tscn" id="15_vybpl"]
+[ext_resource type="PackedScene" uid="uid://cly64ow1gnjlm" path="res://Scenes/triple_spike.tscn" id="16_vybpl"]
+[ext_resource type="PackedScene" uid="uid://cs1p5tq11vt47" path="res://Scenes/wind_spot.tscn" id="17_f6crn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pses1"]
+size = Vector2(20.883331, 20)
 
 [sub_resource type="QuadMesh" id="QuadMesh_u0s3x"]
 size = Vector2(20, 20)
@@ -66,6 +72,12 @@ size = Vector2(3, 20)
 [sub_resource type="QuadMesh" id="QuadMesh_ki7po"]
 size = Vector2(3, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c02se"]
+size = Vector2(3, 20.097088)
+
+[sub_resource type="QuadMesh" id="QuadMesh_1537k"]
+size = Vector2(3, 20)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dqkp2"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_jrbl5"]
@@ -99,6 +111,46 @@ linear_accel_max = -2.2351742e-06
 scale_min = 0.59999996
 scale_max = 1.1999999
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5o5kr"]
+lifetime_randomness = 0.4
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(85, 0, 0)
+emission_shape = 3
+emission_box_extents = Vector3(1, 80, 1)
+angle_min = 90.000015
+angle_max = 90.000015
+spread = 2.0
+initial_velocity_min = -200.0
+initial_velocity_max = -10.0
+gravity = Vector3(0, -10, 0)
+linear_accel_min = -2.0000021
+linear_accel_max = -2.2351742e-06
+scale_min = 0.59999996
+scale_max = 1.1999999
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7g2g1"]
+size = Vector2(20, 144.99973)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fll1h"]
+size = Vector2(20, 15)
+
+[sub_resource type="QuadMesh" id="QuadMesh_qy541"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gmfyt"]
+lifetime_randomness = 0.4
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(75, 0, 0)
+emission_shape = 3
+emission_box_extents = Vector3(1, 80, 1)
+spread = 2.0
+initial_velocity_min = -100.0
+initial_velocity_max = -10.0
+gravity = Vector3(-100, 0, 0)
+linear_accel_min = -2.0000021
+linear_accel_max = -2.2351742e-06
+scale_min = 0.59999996
+scale_max = 1.1999999
+
 [node name="Level5" type="Node2D" unique_id=2096037857]
 script = ExtResource("1_a6k8o")
 
@@ -107,11 +159,12 @@ position = Vector2(322.00003, 180)
 scale = Vector2(60, 10)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1204433086]
+position = Vector2(0.44166708, 0)
 shape = SubResource("RectangleShape2D_pses1")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D" unique_id=304547761]
-position = Vector2(0, 10)
-scale = Vector2(1, 2)
+position = Vector2(0.5249997, 10)
+scale = Vector2(1.0525, 2)
 mesh = SubResource("QuadMesh_u0s3x")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=1711673816]
@@ -279,6 +332,96 @@ shape = SubResource("RectangleShape2D_x7gsr")
 [node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D16" unique_id=921508317]
 mesh = SubResource("QuadMesh_uk1uv")
 
+[node name="StaticBody2D17" type="StaticBody2D" parent="." unique_id=305643851]
+position = Vector2(315, 15)
+scale = Vector2(5, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D17" unique_id=778188232]
+shape = SubResource("RectangleShape2D_x7gsr")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D17" unique_id=156414664]
+mesh = SubResource("QuadMesh_uk1uv")
+
+[node name="StaticBody2D18" type="StaticBody2D" parent="." unique_id=1919823222]
+position = Vector2(675, -325)
+scale = Vector2(30, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D18" unique_id=499865135]
+shape = SubResource("RectangleShape2D_x7gsr")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D18" unique_id=1262150927]
+mesh = SubResource("QuadMesh_uk1uv")
+
+[node name="StaticBody2D19" type="StaticBody2D" parent="." unique_id=1405298699]
+position = Vector2(980, -220)
+scale = Vector2(0.5, 60)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D19" unique_id=26643509]
+shape = SubResource("RectangleShape2D_x7gsr")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D19" unique_id=224086322]
+mesh = SubResource("QuadMesh_uk1uv")
+
+[node name="StaticBody2D20" type="StaticBody2D" parent="." unique_id=401822498]
+position = Vector2(450, -21)
+scale = Vector2(0.5, 21)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D20" unique_id=965558034]
+shape = SubResource("RectangleShape2D_x7gsr")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D20" unique_id=532376927]
+mesh = SubResource("QuadMesh_uk1uv")
+
+[node name="StaticBody2D21" type="StaticBody2D" parent="." unique_id=1944272967]
+position = Vector2(655.00006, -226)
+scale = Vector2(20, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D21" unique_id=507634966]
+shape = SubResource("RectangleShape2D_x7gsr")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D21" unique_id=20804447]
+mesh = SubResource("QuadMesh_uk1uv")
+
+[node name="StaticBody2D22" type="StaticBody2D" parent="." unique_id=899796902]
+position = Vector2(775, -132)
+scale = Vector2(20, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D22" unique_id=433535942]
+shape = SubResource("RectangleShape2D_x7gsr")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D22" unique_id=358177392]
+mesh = SubResource("QuadMesh_uk1uv")
+
+[node name="StaticBody2D23" type="StaticBody2D" parent="." unique_id=420575033]
+position = Vector2(580, -47)
+scale = Vector2(0.5, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D23" unique_id=264735955]
+shape = SubResource("RectangleShape2D_x7gsr")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D23" unique_id=236110407]
+mesh = SubResource("QuadMesh_uk1uv")
+
+[node name="StaticBody2D24" type="StaticBody2D" parent="." unique_id=1620119655]
+position = Vector2(475, -181)
+scale = Vector2(2, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D24" unique_id=443648010]
+shape = SubResource("RectangleShape2D_x7gsr")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D24" unique_id=1061505611]
+mesh = SubResource("QuadMesh_uk1uv")
+
+[node name="StaticBody2D25" type="StaticBody2D" parent="." unique_id=789087080]
+position = Vector2(555, -132)
+scale = Vector2(2, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D25" unique_id=1043343999]
+shape = SubResource("RectangleShape2D_x7gsr")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D25" unique_id=47842744]
+mesh = SubResource("QuadMesh_uk1uv")
+
 [node name="SafetyNet" parent="." unique_id=693047989 instance=ExtResource("2_ftuqy")]
 position = Vector2(0, 8)
 
@@ -298,6 +441,23 @@ mesh = SubResource("QuadMesh_ki7po")
 
 [node name="Marker2D" parent="Teleporter" index="2" unique_id=2049922949]
 position = Vector2(17.666668, 8.111113)
+
+[node name="Teleporter2" parent="." unique_id=1010371968 instance=ExtResource("3_pses1")]
+position = Vector2(974, -23)
+scale = Vector2(3, 10.3)
+
+[node name="CollisionShape2D" parent="Teleporter2" index="0" unique_id=1654710985]
+position = Vector2(0.1666565, -0.04854369)
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_c02se")
+
+[node name="MeshInstance2D" parent="Teleporter2" index="1" unique_id=113377586]
+position = Vector2(0.16666663, -0.048542976)
+scale = Vector2(1, 1.0048544)
+mesh = SubResource("QuadMesh_1537k")
+
+[node name="Marker2D" parent="Teleporter2" index="2" unique_id=2049922949]
+position = Vector2(-6.999998, -32.718445)
 
 [node name="WallOfDoom" parent="." unique_id=1920996098 instance=ExtResource("4_u0s3x")]
 position = Vector2(-378, 270)
@@ -369,6 +529,10 @@ position = Vector2(-273.00003, 29.999998)
 rotation = -1.5707964
 scale = Vector2(5, 2.5)
 
+[node name="OnewayPlatform2" parent="." unique_id=592587739 instance=ExtResource("6_ytgun")]
+position = Vector2(315, 50)
+rotation = 1.5707964
+
 [node name="CrumblingPlatform" parent="." unique_id=704336917 instance=ExtResource("7_rpnhq")]
 position = Vector2(-438, -320)
 scale = Vector2(2, 1.5)
@@ -384,8 +548,18 @@ scale = Vector2(5.25, 2.625)
 [node name="Spike" parent="." unique_id=1083087655 instance=ExtResource("8_hu0ol")]
 position = Vector2(-468, -445)
 
+[node name="Spike2" parent="." unique_id=1663722465 instance=ExtResource("8_hu0ol")]
+position = Vector2(964.99994, -266)
+rotation = 3.1415927
+
 [node name="Coin" parent="." unique_id=861498250 instance=ExtResource("9_m47b0")]
 position = Vector2(-159, -248)
+
+[node name="Coin2" parent="." unique_id=708725187 instance=ExtResource("9_m47b0")]
+position = Vector2(315, -44)
+
+[node name="Coin3" parent="." unique_id=602244294 instance=ExtResource("9_m47b0")]
+position = Vector2(770, -61)
 
 [node name="ButtonDoorCombo" parent="." unique_id=903838637 instance=ExtResource("10_x7gsr")]
 position = Vector2(-200, 47)
@@ -415,6 +589,15 @@ amount = 20
 lifetime = 2.1999999999999997
 process_material = SubResource("ParticleProcessMaterial_25373")
 
+[node name="VerticalWindSpot2" parent="." unique_id=480307660 instance=ExtResource("11_rpnhq")]
+position = Vector2(515, -3)
+rotation = -1.5707964
+scale = Vector2(0.7, 0.6)
+_windForce = 900
+
+[node name="GPUParticles2D" parent="VerticalWindSpot2" index="1" unique_id=1263439148]
+process_material = SubResource("ParticleProcessMaterial_5o5kr")
+
 [node name="MovingDeadlyPlatform" parent="." unique_id=243635716 instance=ExtResource("12_hu0ol")]
 position = Vector2(205, -120)
 
@@ -436,11 +619,65 @@ position = Vector2(150, 0)
 [node name="Timer" parent="MovingDeadlyPlatform2" index="3" unique_id=1146678348]
 wait_time = 4.0
 
+[node name="DeadlyGround" parent="." unique_id=443983 instance=ExtResource("13_uk1uv")]
+z_index = -1
+position = Vector2(345.99997, 18)
+scale = Vector2(5.7, 10)
+
+[node name="GravityChanger" parent="." unique_id=446746866 instance=ExtResource("14_25373")]
+position = Vector2(675, -120)
+scale = Vector2(3, 2)
+
+[node name="Ice Platform" type="StaticBody2D" parent="." unique_id=477667259]
+position = Vector2(943, -276)
+rotation = 3.1415927
+scale = Vector2(0.31999508, 0.04000014)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ice Platform" unique_id=503254601]
+position = Vector2(0, 52.499756)
+scale = Vector2(10, 0.5)
+shape = SubResource("RectangleShape2D_7g2g1")
+
+[node name="Ice2" parent="Ice Platform" unique_id=1768849772 instance=ExtResource("15_vybpl")]
+position = Vector2(-0.00012207031, 25)
+scale = Vector2(10.000155, 12.999969)
+
+[node name="CollisionShape2D" parent="Ice Platform/Ice2" index="0" unique_id=24368903]
+shape = SubResource("RectangleShape2D_fll1h")
+
+[node name="MeshInstance2D" parent="Ice Platform/Ice2" index="1" unique_id=313448762]
+mesh = SubResource("QuadMesh_qy541")
+
+[node name="TripleSpikes" parent="." unique_id=1494210746 instance=ExtResource("16_vybpl")]
+position = Vector2(561, -312)
+rotation = 3.1415927
+
+[node name="TripleSpikes2" parent="." unique_id=568807565 instance=ExtResource("16_vybpl")]
+position = Vector2(715, -312)
+rotation = 3.1415927
+
+[node name="TripleSpikes3" parent="." unique_id=1321079768 instance=ExtResource("16_vybpl")]
+position = Vector2(678, -213)
+rotation = 3.1415927
+
+[node name="WindSpot" parent="." unique_id=366336177 instance=ExtResource("17_f6crn")]
+position = Vector2(654, -180.00002)
+scale = Vector2(2, 0.45)
+_maxSpeedFromWind = 10.0
+
+[node name="GPUParticles2D" parent="WindSpot" index="1" unique_id=1263439148]
+lifetime = 1.5
+process_material = SubResource("ParticleProcessMaterial_gmfyt")
+
 [editable path="Teleporter"]
+[editable path="Teleporter2"]
 [editable path="WallOfDoom"]
 [editable path="WallOfDoom/DeadlyGround"]
 [editable path="JumpingAlternatingPlatforms"]
 [editable path="ButtonDoorCombo"]
 [editable path="VerticalWindSpot"]
+[editable path="VerticalWindSpot2"]
 [editable path="MovingDeadlyPlatform"]
 [editable path="MovingDeadlyPlatform2"]
+[editable path="Ice Platform/Ice2"]
+[editable path="WindSpot"]
