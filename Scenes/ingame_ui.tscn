@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://6wqn0vhsvlmi" path="res://Scripts/UI.cs" id="1_tcpi4"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tcpi4"]
+
 [sub_resource type="FontVariation" id="FontVariation_tcpi4"]
 
 [node name="ingameUI" type="Control" unique_id=440226007]
@@ -117,6 +119,7 @@ theme_override_constants/margin_bottom = 110
 [node name="Button" type="Button" parent="CanvasLayer/EndUI/MarginContainer/Panel/MarginContainer/MarginContainer" unique_id=753848839]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_tcpi4")
 
 [node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/EndUI/MarginContainer/Panel/MarginContainer" unique_id=1662366550]
 layout_mode = 2

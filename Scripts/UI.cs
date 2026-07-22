@@ -13,6 +13,7 @@ public partial class UI : CanvasLayer {
 
 	private bool _restartLevel;
 	private int _score;
+	private int _levelNumber = 0;
 
     public override void _Ready() {
         Instance = this;
@@ -44,14 +45,25 @@ public partial class UI : CanvasLayer {
 	
 	public void ShowEndUI(bool survived) {
 		lobbyButton.Text ="Return to Lobby";
-		if (survived) {
-			endButton.Text = "Next Level";
-			endTypeText.Text = "[b]LEVEL COMPLETE!";
-			_restartLevel = false;
-		} else {
+		if (endButton.Disabled) endButton.Disabled = false;
+		if (_levelNumber < 5) {
+			if (survived) {
+				endButton.Text = "Next Level";
+				endTypeText.Text = "[b]LEVEL COMPLETED!";
+				_restartLevel = false;
+			} else {
+				endTypeText.Text = "LEVEL FAILED!";
+				endButton.Text = "Retry";
+				_restartLevel = true;
+			}
+		} else if (!survived) {
 			endTypeText.Text = "LEVEL FAILED!";
 			endButton.Text = "Retry";
 			_restartLevel = true;
+		} else {
+			endButton.Text = "";
+			endButton.Disabled = true;
+			endTypeText.Text = "[b]LEVEL COMPLETED!";
 		}
 		endUI.Show();
 	}
@@ -66,5 +78,9 @@ public partial class UI : CanvasLayer {
 
 	public void HideHUD() {
 		HUD.Hide();
+	}
+
+	public void UpdateLevelNumber(int number) {
+		_levelNumber = number;
 	}
 }
