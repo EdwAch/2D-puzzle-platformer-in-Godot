@@ -1260,6 +1260,9 @@ mesh = SubResource("PrismMesh_tsayu")
 [node name="Teleporter" parent="." unique_id=1955934454 instance=ExtResource("12_4pbjs")]
 position = Vector2(2422, 266)
 
+[node name="MeshInstance2D" parent="Teleporter" index="1" unique_id=113377586]
+z_index = 21
+
 [node name="ButtonDoorCombo2" parent="." unique_id=1889763793 instance=ExtResource("4_bcgyv")]
 position = Vector2(3485, 104.00001)
 
@@ -1351,6 +1354,7 @@ shape = SubResource("RectangleShape2D_65d4s")
 [editable path="DeadlyGround8"]
 [editable path="DeadlyGround7"]
 [editable path="Spike"]
+[editable path="Teleporter"]
 [editable path="ButtonDoorCombo2"]
 [editable path="Teleporter2"]
 [editable path="EndDoor"]
